@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export function InlineEditorFirstAttempt() {
+export function InlineEditorWithAsyncSave() {
   return (
     <>
       <Description />
@@ -12,12 +12,13 @@ export function InlineEditorFirstAttempt() {
 function Description() {
   return (
     <div>
-      <p>Inline editor component:</p>
+      <p>Add async "save" callback to the editor</p>
       <ul>
-        <li>Readonly and Edit Modes</li>
-        <li>Click "Edit" to switch into edit mode</li>
-        <li>"Save" exits edit mode and persists the value</li>
-        <li>"Cancel" exits edit mode and discards the value</li>
+        <li>In a real app, this might call an API</li>
+        <li>
+          Saving often takes some time, so the UI should show a "busy" state
+        </li>
+        <li>Add an async `save` function, and disable the inputs if busy</li>
       </ul>
     </div>
   );
@@ -27,6 +28,16 @@ function InlineEditor() {
   const [savedValue, setSavedValue] = useState('Edit me!');
   const [editorValue, setEditorValue] = useState(savedValue);
   const [isEditing, setIsEditing] = useState(false);
+
+  const [isBusySaving, setIsBusySaving] = useState(false);
+
+  async function doSave(value: string) {
+    setIsBusySaving(true);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setSavedValue(value);
+    setIsEditing(false);
+    setIsBusySaving(false);
+  }
 
   const readonlyView = (
     <>
@@ -48,6 +59,7 @@ function InlineEditor() {
     <>
       <input
         value={editorValue}
+        disabled={isBusySaving}
         onChange={(event) => {
           setEditorValue(event.target.value);
         }}
@@ -55,6 +67,7 @@ function InlineEditor() {
       <div>
         <button
           type="reset"
+          disabled={isBusySaving}
           onClick={(event) => {
             event.preventDefault();
             setIsEditing(false);
@@ -64,13 +77,13 @@ function InlineEditor() {
         </button>
         <button
           type="submit"
+          disabled={isBusySaving}
           onClick={(event) => {
             event.preventDefault();
-            setSavedValue(editorValue);
-            setIsEditing(false);
+            doSave(editorValue);
           }}
         >
-          Save
+          {isBusySaving ? 'Saving…' : 'Save'}
         </button>
       </div>
     </>
