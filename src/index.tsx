@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { SimpleEditor } from './examples/1.SimpleEditor';
+import { InlineEditorFirstAttempt } from './examples/1.InlineEditorFirstAttempt';
 import './index.css';
 import { BasePlugin, PluginManager } from './talkUtils/PluginManager';
 import { PluginSelectorDropdown } from './talkUtils/PluginSelectorDropdown';
-import { renderSlide } from './talkUtils/render';
+import { renderSlide } from './talkUtils/renderSlide';
 
 export interface SlidePlugin extends BasePlugin {
   element: React.ReactElement;
@@ -11,7 +11,7 @@ export interface SlidePlugin extends BasePlugin {
 
 export const SlidePluginManager = new PluginManager<SlidePlugin>({
   name: '1. Simple editor',
-  element: <SimpleEditor />,
+  element: <InlineEditorFirstAttempt />,
 });
 
 export function SlideSelector() {
