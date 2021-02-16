@@ -1,0 +1,21 @@
+.slide-styles-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 100%;
+  font-size: 18px;
+  font-family: monospace;
+}
+
+.module-name {
+  font-size: 14px;
+  font-style: italic;
+  color: #333;
+}
+
+.module-container {
+  margin-top: 20px;
+  flex: 1;
+  position: relative;
+}

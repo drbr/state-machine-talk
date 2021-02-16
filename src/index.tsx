@@ -1,11 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState } from 'react';
+import { SimpleEditor } from './examples/1.SimpleEditor';
 import './index.css';
-import App from './App';
+import { BasePlugin, PluginManager } from './talkUtils/PluginManager';
+import { PluginSelectorDropdown } from './talkUtils/PluginSelectorDropdown';
+import { renderSlide } from './talkUtils/render';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+export interface SlidePlugin extends BasePlugin {
+  element: React.ReactElement;
+}
+
+export const SlidePluginManager = new PluginManager<SlidePlugin>({
+  name: '1. Simple editor',
+  element: <SimpleEditor />,
+});
+
+export function SlideSelector() {
+  const [slide, setSlide] = useState(SlidePluginManager.getPluginsInOrder()[0]);
+
+  return (
+    <div className="slide-styles-container">
+      <PluginSelectorDropdown
+        label="Select Slide: "
+        pluginManager={SlidePluginManager}
+        selectedPlugin={slide}
+        onChange={setSlide}
+      />
+      <div className="module-container">{slide.element}</div>
+    </div>
+  );
+}
+
+renderSlide(<SlideSelector />);
