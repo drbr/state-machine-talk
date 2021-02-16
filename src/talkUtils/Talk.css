@@ -20,3 +20,21 @@
   flex: 1;
   position: relative;
 }
+
+.monospaced {
+  font-family: monospace;
+  background-color: rgba(27, 31, 35, 0.1);
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
+h1 {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+li {
+  margin-bottom: 15px;
+}

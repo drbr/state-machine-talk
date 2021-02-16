@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Mono } from '../talkUtils/FormattedText';
 
 export function InlineEditorWithAsyncSave() {
   return (
@@ -18,7 +19,11 @@ function Description() {
         <li>
           Saving often takes some time, so the UI should show a "busy" state
         </li>
-        <li>Add an async `save` function, and disable the inputs if busy</li>
+        <li>
+          Add an async <Mono>doSave</Mono> function and{' '}
+          <Mono>isBusySaving</Mono> state variable, and disable the inputs if
+          busy
+        </li>
       </ul>
     </div>
   );
@@ -29,10 +34,12 @@ function InlineEditor() {
   const [editorValue, setEditorValue] = useState(savedValue);
   const [isEditing, setIsEditing] = useState(false);
 
+  // New boolean for the "busy" state
   const [isBusySaving, setIsBusySaving] = useState(false);
 
   async function doSave(value: string) {
     setIsBusySaving(true);
+    // Pretend to call the API
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setSavedValue(value);
     setIsEditing(false);
@@ -80,6 +87,7 @@ function InlineEditor() {
           disabled={isBusySaving}
           onClick={(event) => {
             event.preventDefault();
+            // Call the `doSave` routine instead of directly setting savedValue
             doSave(editorValue);
           }}
         >
