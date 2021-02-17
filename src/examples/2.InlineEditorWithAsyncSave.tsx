@@ -18,6 +18,7 @@ function Description() {
         <li>In a real app, this might call an API</li>
         <li>
           Saving often takes some time, so the UI should show a "busy" state
+          until the promise resolves
         </li>
         <li>
           Add an async <Mono>doSave</Mono> function and{' '}

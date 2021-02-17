@@ -12,7 +12,7 @@ export function InlineEditorFirstAttempt() {
 function Description() {
   return (
     <div>
-      <p>Inline editor component:</p>
+      <h1>Inline editor component</h1>
       <ul>
         <li>Readonly and Edit Modes</li>
         <li>Click "Edit" to switch into edit mode</li>

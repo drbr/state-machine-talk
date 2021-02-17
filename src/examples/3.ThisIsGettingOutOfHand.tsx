@@ -14,14 +14,14 @@ export function ThisIsGettingOutOfHand() {
         </li>
         <li>
           If we're not careful, we could end up in an invalid combination (e.g.{' '}
-          <Mono>!isEditing && isBusySaving</Mono>, or not handling{' '}
-          <Mono>savedValue</Mono> vs. <Mono>editorValue</Mono> correctly)
+          <Mono>!isEditing && isBusySaving</Mono>, or using{' '}
+          <Mono>editorValue</Mono> in readonly mode)
         </li>
       </ul>
       <p>
         <strong>Rule of thumb:</strong> If multiple pieces of state depend on
-        each other, or if we need to update multiple at the same time, manage
-        that state together.
+        each other, or if multiple values get updated at the same time, manage
+        that state as one.
       </p>
       <ul>
         <li>How do we do this?</li>

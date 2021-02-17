@@ -38,3 +38,11 @@ h1 {
 li {
   margin-bottom: 15px;
 }
+
+li.emoji-list-item-owl {
+  list-style-type: '🦉  ';
+}
+
+li.emoji-list-item-person {
+  list-style-type: '🧑  ';
+}
