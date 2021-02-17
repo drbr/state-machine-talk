@@ -1,5 +1,6 @@
+import React from 'react';
 import { ReactComponent as ReducerRuntimeDiagram } from '../images/ReducerRuntimeDiagram.svg';
-import { Centered, Strike } from '../talkUtils/FormattedText';
+import { Centered, Strike, VerticalSpacer } from '../talkUtils/FormattedText';
 
 export function AReducerNeedsARuntime() {
   return (
@@ -17,6 +18,7 @@ export function AReducerNeedsARuntime() {
         The reducer implements the business logic, and the framework/driver
         interprets that logic in the context of the application.
       </p>
+      <VerticalSpacer />
       <p>
         <Strike>Many popular technologies</Strike> Our entire computing world is
         based on this general concept:

@@ -20,6 +20,10 @@
   position: relative;
 }
 
+.vertical-paragraph-spacer {
+  height: 20px;
+}
+
 .monospaced {
   font-family: monospace;
   background-color: rgba(27, 31, 35, 0.1);

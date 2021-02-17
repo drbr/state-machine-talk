@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   EmojiListItem,
-  EmptyParagraph,
+  VerticalSpacer,
   Mono,
 } from '../talkUtils/FormattedText';
 
@@ -27,7 +27,7 @@ export function TheReducerPattern() {
           can be used with any UI framework!
         </li>
       </ul>
-      <EmptyParagraph />
+      <VerticalSpacer />
       <ul>
         <EmojiListItem.Person>
           "O, wise reducer, hypothetically … if the current state were 2, what

@@ -1,4 +1,5 @@
-import { Mono } from '../talkUtils/FormattedText';
+import React from 'react';
+import { VerticalSpacer, Mono } from '../talkUtils/FormattedText';
 
 export function ThisIsGettingOutOfHand() {
   return (
@@ -18,6 +19,7 @@ export function ThisIsGettingOutOfHand() {
           <Mono>editorValue</Mono> in readonly mode)
         </li>
       </ul>
+      <VerticalSpacer />
       <p>
         <strong>Rule of thumb:</strong> If multiple pieces of state depend on
         each other, or if multiple values get updated at the same time, manage

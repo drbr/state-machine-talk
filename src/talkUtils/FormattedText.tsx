@@ -7,6 +7,14 @@ export function Mono(props: { children: string }) {
   return <span className="monospaced">{props.children}</span>;
 }
 
+export function MonoBlock(props: { children: ReactNode }) {
+  return (
+    <div className="monospaced">
+      <pre>{props.children}</pre>
+    </div>
+  );
+}
+
 /**
  * Strikethrough text.
  */
@@ -14,8 +22,8 @@ export function Strike(props: { children: ReactNode }) {
   return <span className="strikethrough">{props.children}</span>;
 }
 
-export function EmptyParagraph() {
-  return <h1>{'\u200b'}</h1>;
+export function VerticalSpacer() {
+  return <div className="vertical-paragraph-spacer"></div>;
 }
 
 export function Centered(props: { children: ReactNode }) {

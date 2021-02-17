@@ -13,6 +13,12 @@ export function ReducerInCode_SwitchStatement() {
   );
 }
 
+type InlineEditorState = {
+  readonly savedValue: string;
+  readonly editorValue: string;
+  readonly isEditing: boolean;
+};
+
 type InlineEditorAction =
   | {
       type: 'START_EDITING' | 'CANCEL' | 'SAVE';
@@ -21,12 +27,6 @@ type InlineEditorAction =
       type: 'EDIT_VALUE';
       value: string;
     };
-
-type InlineEditorState = {
-  readonly savedValue: string;
-  readonly editorValue: string;
-  readonly isEditing: boolean;
-};
 
 /** Compile-time typecheck to make sure a certain code path will never be reached */
 const assertUnreachable = (x: never) => {};
