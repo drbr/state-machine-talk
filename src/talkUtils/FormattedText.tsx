@@ -15,7 +15,11 @@ export function Strike(props: { children: ReactNode }) {
 }
 
 export function EmptyParagraph() {
-  return <p>{'\u200b'}</p>;
+  return <h1>{'\u200b'}</h1>;
+}
+
+export function Centered(props: { children: ReactNode }) {
+  return <div style={{ textAlign: 'center' }}>{props.children}</div>;
 }
 
 /**

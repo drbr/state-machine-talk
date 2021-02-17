@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Mono } from '../talkUtils/FormattedText';
 
 export function InlineEditorWithAsyncSave() {

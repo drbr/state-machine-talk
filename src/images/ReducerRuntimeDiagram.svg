@@ -1,0 +1,105 @@
+<svg version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink" width="321" height="335">
+  <defs/>
+  <g>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g/>
+    <g>
+      <rect fill="white" stroke="none" x="0" y="0" width="321" height="335"/>
+    </g>
+    <g/>
+    <g>
+      <path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 33.22129143216016 71.22148638799999 L 33.22129143216016 335.851779848" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray="12.565541,5.445067766666667"/>
+      <path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 135.10407510214452 71.22148638799999 L 135.10407510214452 335.851779848" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray="12.565541,5.445067766666667"/>
+      <path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 267.4763237784466 71.22148638799999 L 267.4763237784466 335.851779848" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray="12.565541,5.445067766666667"/>
+    </g>
+    <g>
+      <path fill="none" stroke="none"/>
+      <g>
+        <path fill="white" stroke="black" paint-order="fill stroke markers" d=" M 8.167601650000002 27.116437477999995 L 58.27498121432031 27.116437477999995 L 58.27498121432031 71.22148638799999 L 8.167601650000002 71.22148638799999 L 8.167601650000002 27.116437477999995 Z" stroke-miterlimit="10" stroke-width="2.613632528" stroke-dasharray=""/>
+      </g>
+      <g>
+        <g/>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="25.8912972305" y="54.88628308799999" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">UI</text>
+      </g>
+      <path fill="none" stroke="none"/>
+      <g>
+        <path fill="white" stroke="black" paint-order="fill stroke markers" d=" M 74.6101845143203 10.944586210999995 L 195.59796568996876 10.944586210999995 L 195.59796568996876 71.22148638799999 L 74.6101845143203 71.22148638799999 L 74.6101845143203 10.944586210999995 Z" stroke-miterlimit="10" stroke-width="2.613632528" stroke-dasharray=""/>
+      </g>
+      <g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="98.45054116659765" y="38.551079787999996" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Framework</text>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="92.3338800948203" y="54.886283088" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">(stores state)</text>
+      </g>
+      <path fill="none" stroke="none"/>
+      <g>
+        <path fill="white" stroke="black" paint-order="fill stroke markers" d=" M 222.0468405392552 27.116437477999995 L 312.90580701763804 27.116437477999995 L 312.90580701763804 71.22148638799999 L 222.0468405392552 71.22148638799999 L 222.0468405392552 27.116437477999995 Z" stroke-miterlimit="10" stroke-width="2.613632528" stroke-dasharray=""/>
+      </g>
+      <g>
+        <g/>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="239.7705361197552" y="54.88628308799999" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Reducer</text>
+      </g>
+    </g>
+    <g>
+      <g>
+        <g>
+          <rect fill="white" stroke="none" x="61.34018750115625" y="103.891892988" width="45.64499153199219" height="21.23576429"/>
+        </g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="63.79046799615625" y="118.593575958" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Action</text>
+      </g>
+      <g>
+        <path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 33.22129143216016 125.12765727799999 L 121.65475771847785 125.12765727799999" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray=""/>
+        <g transform="translate(135.10407510214452,125.12765727799999) translate(-135.10407510214452,-125.12765727799999)">
+          <path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 121.49140568547786 118.32132256966665 L 135.10407510214452 125.12765727799999 L 121.49140568547786 131.93399198633333 Z"/>
+        </g>
+      </g>
+      <g>
+        <g>
+          <rect fill="white" stroke="none" x="154.4340656738112" y="149.63046222799997" width="93.71226753296875" height="21.23576429"/>
+        </g>
+        <g>
+          <rect fill="white" stroke="none" x="154.4340656738112" y="165.96566552799996" width="45.64499153199219" height="21.23576429"/>
+        </g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="156.8843461688112" y="164.33214519799995" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Current state,</text>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="156.8843461688112" y="180.66734849799994" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Action</text>
+      </g>
+      <g>
+        <path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 135.10407510214452 187.20142981799998 L 254.02700639477996 187.20142981799998" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray=""/>
+        <g transform="translate(267.4763237784466,187.20142981799998) translate(-267.4763237784466,-187.20142981799998)">
+          <path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 253.86365436177994 180.39509510966664 L 267.4763237784466 187.20142981799998 L 253.86365436177994 194.00776452633332 Z"/>
+        </g>
+      </g>
+      <g>
+        <g>
+          <rect fill="white" stroke="none" x="165.84064373777605" y="211.704234768" width="70.89911140503906" height="21.23576429"/>
+        </g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="168.29092423277604" y="226.40591773799997" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Next state</text>
+      </g>
+      <g>
+        <path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 267.4763237784466 232.93999905799998 L 148.55339248581117 232.93999905799998" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray=""/>
+        <g transform="translate(135.10407510214452,232.93999905799998) translate(-135.10407510214452,-232.93999905799998)">
+          <path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 148.7167445188112 226.13366434966665 L 135.10407510214452 232.93999905799998 L 148.7167445188112 239.74633376633332 Z"/>
+        </g>
+      </g>
+      <g>
+        <g>
+          <rect fill="white" stroke="none" x="57.67160839959375" y="257.44280400799994" width="52.98214973511719" height="21.23576429"/>
+        </g>
+        <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="60.12188889459375" y="272.1444869779999" text-anchor="start" dominant-baseline="alphabetic" xml:space="preserve">Render</text>
+      </g>
+      <g>
+        <path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 135.10407510214452 278.67856829799996 L 46.670608815826824 278.67856829799996" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray=""/>
+        <g transform="translate(33.22129143216016,278.67856829799996) translate(-33.22129143216016,-278.67856829799996)">
+          <path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 46.83396084882683 271.8722335896666 L 33.22129143216016 278.67856829799996 L 46.83396084882683 285.4849030063333 Z"/>
+        </g>
+      </g>
+    </g>
+    <g/>
+    <g/>
+  </g>
+</svg>

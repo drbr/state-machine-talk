@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { InlineEditorFirstAttempt } from './examples/1.InlineEditorFirstAttempt';
-import { InlineEditorWithAsyncSave } from './examples/2.InlineEditorWithAsyncSave';
-import { ThisIsGettingOutOfHand } from './examples/3.ThisIsGettingOutOfHand';
-import { TheReducerPattern } from './examples/4.TheReducerPattern';
-import { ReducerInCode } from './examples/5.ReducerInCode';
+import { InlineEditorFirstAttempt } from './slides/1.InlineEditorFirstAttempt';
+import { InlineEditorWithAsyncSave } from './slides/2.InlineEditorWithAsyncSave';
+import { ThisIsGettingOutOfHand } from './slides/3.ThisIsGettingOutOfHand';
+import { TheReducerPattern } from './slides/4.TheReducerPattern';
+import { ReducerInCode_Actions } from './slides/5.ReducerInCode_Actions';
+import { ReducerInCode_SwitchStatement } from './slides/6.ReducerInCode_SwitchStatement';
+import { AReducerNeedsARuntime } from './slides/7.AReducerNeedsARuntime';
 import './index.css';
 import { BasePlugin, PluginManager } from './talkUtils/PluginManager';
 import { PluginSelectorDropdown } from './talkUtils/PluginSelectorDropdown';
 import { renderSlide } from './talkUtils/renderSlide';
+import { ReactUseReducer } from './slides/8.ReactUseReducer';
 
 export interface SlidePlugin extends BasePlugin {
   element: React.ReactElement;
@@ -31,8 +34,20 @@ export const SlidePluginManager = new PluginManager<SlidePlugin>(
     element: <TheReducerPattern />,
   },
   {
-    name: '5. Reducer in code',
-    element: <ReducerInCode />,
+    name: '5. Reducer in code - Actions',
+    element: <ReducerInCode_Actions />,
+  },
+  {
+    name: '6. Reducer in code – Switch Statement',
+    element: <ReducerInCode_SwitchStatement />,
+  },
+  {
+    name: '7. A reducer needs a runtime',
+    element: <AReducerNeedsARuntime />,
+  },
+  {
+    name: '8. React useReducer',
+    element: <ReactUseReducer />,
   }
 );
 
@@ -41,9 +56,9 @@ export function SlideSelector() {
   const [slide, setSlide] = useState(plugins[plugins.length - 1]);
 
   return (
-    <div className="slide-styles-container">
+    <div>
       <PluginSelectorDropdown
-        label="Select Slide: "
+        label=""
         pluginManager={SlidePluginManager}
         selectedPlugin={slide}
         onChange={setSlide}
