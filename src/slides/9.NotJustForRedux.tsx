@@ -10,11 +10,14 @@ export function NotJustForRedux() {
         component, or in a parent component
       </p>
       <p>
-        Updating state with <Mono>dispatch</Mono> has several advantages:
+        Using reducers and <Mono>dispatch</Mono> has several advantages:
       </p>
       <ul>
         <li>Helps us understand what each UI element callback actually does</li>
         <li>Decouples state logic from display code</li>
+        <li>
+          All the state logic is encapsulated in one easily-testable function
+        </li>
         <li>
           Child components don't need to be aware of the details of the parent's
           state
