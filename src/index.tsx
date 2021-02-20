@@ -12,6 +12,7 @@ import { PluginSelectorDropdown } from './talkUtils/PluginSelectorDropdown';
 import { renderSlide } from './talkUtils/renderSlide';
 import { ReactUseReducer } from './slides/8.ReactUseReducer';
 import { NotJustForRedux } from './slides/9.NotJustForRedux';
+import { SideEffects } from './slides/10.SideEffects';
 
 export interface SlidePlugin extends BasePlugin {
   element: React.ReactElement;
@@ -53,6 +54,10 @@ export const SlidePluginManager = new PluginManager<SlidePlugin>(
   {
     name: '9. Not just for Redux',
     element: <NotJustForRedux />,
+  },
+  {
+    name: '10. Side Effects',
+    element: <SideEffects />,
   }
 );
 
