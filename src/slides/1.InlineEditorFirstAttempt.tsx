@@ -78,7 +78,7 @@ function InlineEditor() {
   );
 
   return (
-    <form style={{ border: '1px solid black', padding: 10 }}>
+    <form className="inline-editor-box">
       {isEditing ? editingView : readonlyView}
     </form>
   );

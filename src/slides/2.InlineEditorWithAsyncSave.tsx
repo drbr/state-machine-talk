@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mono } from '../talkUtils/FormattedText';
+import { Mono } from '../talkUtils/FormatAndLayoutComponents';
 
 export function InlineEditorWithAsyncSave() {
   return (
@@ -17,8 +17,8 @@ function Description() {
       <ul>
         <li>In a real app, this might call an API</li>
         <li>
-          Saving often takes some time, so the UI should show a "busy" state
-          until the promise resolves
+          Saving takes some time, so the UI should show a "busy" state until the
+          promise resolves
         </li>
         <li>
           Add an async <Mono>doSave</Mono> function and{' '}
@@ -99,7 +99,7 @@ function InlineEditor() {
   );
 
   return (
-    <form style={{ border: '1px solid black', padding: 10 }}>
+    <form className="inline-editor-box">
       {isEditing ? editingView : readonlyView}
     </form>
   );

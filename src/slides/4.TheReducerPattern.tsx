@@ -3,24 +3,25 @@ import {
   EmojiListItem,
   VerticalSpacer,
   Mono,
-} from '../talkUtils/FormattedText';
+} from '../talkUtils/FormatAndLayoutComponents';
 
 export function TheReducerPattern() {
   return (
     <>
       <h1>The Reducer Pattern</h1>
-      <p>A reducer is a pure function that implements a simple formula:</p>
+      <p>A reducer is a pure function that implements this formula:</p>
       <p>
         <Mono>{'(previousState, action) => nextState'}</Mono>
       </p>
+      <p>What is a "pure function"?</p>
       <ul>
         <li>
-          A reducer <em>doesn't manipulate any state</em>, it just provides
-          information.
+          Has no dependencies and <em>doesn't manipulate any state</em>, it just
+          provides information.
         </li>
         <li>
-          Instead of mutating <Mono>previousState</Mono> directly, it returns a
-          new object representing <Mono>nextState</Mono>.
+          Instead of mutating <Mono>previousState</Mono> directly, returns a new
+          object representing <Mono>nextState</Mono>.
         </li>
         <li>
           Since it's just a function that deals with plain JS objects, a reducer

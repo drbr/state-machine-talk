@@ -1,24 +1,21 @@
 import React, { useReducer } from 'react';
-import { VerticalSpacer, Mono, MonoBlock } from '../talkUtils/FormattedText';
-
-const assertUnreachable = (x: never) => {};
+import { assertUnreachable } from '../codeUtils/assertUnreachable';
+import { Mono, MonoBlock } from '../talkUtils/FormatAndLayoutComponents';
 
 const reducerExample = `const [state, dispatch] = useReducer(
   reducer, initialState
 );
 `;
 
-export function ReactUseReducer() {
+export function UseReducerHook() {
   return (
     <>
-      <h1>useReducer hook</h1>
+      <h1>useReducer Hook</h1>
       <p>
         React provides the <Mono>useReducer</Mono> hook, which lets us use a
         reducer to manage a component's state.
       </p>
-      <p>
-        <MonoBlock>{reducerExample}</MonoBlock>
-      </p>
+      <MonoBlock>{reducerExample}</MonoBlock>
       <ul>
         <li>
           <strong>State:</strong> The current state
@@ -30,8 +27,8 @@ export function ReactUseReducer() {
       </ul>
       <p>
         In the component's UI callbacks, instead of calling the set state
-        functions, dispatch actions instead. React will run that action through
-        the reducer and update the state.
+        functions, we'll dispatch actions instead. React will send that action
+        through the reducer and update the state.
       </p>
       <InlineEditor />
     </>
@@ -94,7 +91,7 @@ const initialInlineEditorState: InlineEditorState = {
 };
 
 function InlineEditor() {
-  // Send the initial state to the reducer
+  // Instead of having three separate useState instances, we have a single reducer
   const [state, dispatch] = useReducer(
     inlineEditorReducer,
     initialInlineEditorState
@@ -104,6 +101,7 @@ function InlineEditor() {
     <>
       <span>{state.savedValue}</span>
       <div>
+        {/* Instead of manually updating the state, we dispatch events */}
         <button onClick={() => dispatch({ type: 'START_EDITING' })}>
           Edit
         </button>
@@ -143,7 +141,7 @@ function InlineEditor() {
   );
 
   return (
-    <form style={{ border: '1px solid black', padding: 10 }}>
+    <form className="inline-editor-box">
       {state.isEditing ? editingView : readonlyView}
     </form>
   );

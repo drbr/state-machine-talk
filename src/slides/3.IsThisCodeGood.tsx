@@ -1,5 +1,5 @@
 import React from 'react';
-import { VerticalSpacer, Mono } from '../talkUtils/FormattedText';
+import { VerticalSpacer, Mono } from '../talkUtils/FormatAndLayoutComponents';
 
 export function ThisIsGettingOutOfHand() {
   return (
@@ -11,8 +11,10 @@ export function ThisIsGettingOutOfHand() {
       </p>
       <ul>
         <li>
-          State updates' "business logic" is scattered throughout the component
+          State updates' "business logic" is scattered throughout the component;
+          hard to quickly understand what each handler does
         </li>
+        <li>State management logic is tightly coupled with UI code</li>
         <li>
           If we're not careful, we could end up in an invalid combination (e.g.{' '}
           <Mono>!isEditing && isBusySaving</Mono>, or using{' '}

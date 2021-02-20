@@ -4,7 +4,7 @@
   flex-direction: column;
   max-width: 100%;
   font-size: 20px;
-  line-height: 1.2em;
+  line-height: 1.2;
   font-family: 'Public Sans', Verdana, Geneva, sans-serif;
 }
 
@@ -52,4 +52,18 @@ li.emoji-list-item-owl {
 
 li.emoji-list-item-person {
   list-style-type: '🧑  ';
+}
+
+.inline-editor-box {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.right-image-container {
+  float: right;
+  display: flex;
+  flex-direction: column;
+}
+.right-image-container > img {
+  margin: 5px;
 }
