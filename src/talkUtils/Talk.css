@@ -4,7 +4,7 @@
   flex-direction: column;
   max-width: 100%;
   font-size: 20px;
-  line-height: 1.2;
+  line-height: 1.2em;
   font-family: 'Public Sans', Verdana, Geneva, sans-serif;
 }
 
@@ -21,20 +21,12 @@
 }
 
 .vertical-paragraph-spacer {
-  height: 0;
-  margin-top: 40px;
+  height: 20px;
 }
 
 .monospaced {
   font-family: monospace;
   background-color: rgba(27, 31, 35, 0.1);
-}
-
-.mono-block {
-  padding: 8px;
-}
-.mono-block pre {
-  margin: 0;
 }
 
 .strikethrough {
@@ -74,4 +66,9 @@ li.emoji-list-item-person {
 }
 .right-image-container > img {
   margin: 5px;
+}
+
+.flex-column-container {
+  display: flex;
+  flex-direction: column;
 }

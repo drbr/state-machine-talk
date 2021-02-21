@@ -1,15 +1,13 @@
-import React, { Dispatch } from 'react';
-import {
-  EffectReducer,
-  EffectReducerExec,
-  useEffectReducer,
-} from 'use-effect-reducer';
+import { renderHook } from '@testing-library/react-hooks/dom';
+import { EffectReducer, useEffectReducer } from 'use-effect-reducer';
 import { assertUnreachable } from '../codeUtils/assertUnreachable';
 import {
   Mono,
   MonoBlock,
   VerticalSpacer,
 } from '../talkUtils/FormatAndLayoutComponents';
+import { testExpect } from '../codeUtils/testAssert';
+import { testSpy } from '../codeUtils/testSpy';
 
 export function Testing() {
   return (
@@ -45,34 +43,113 @@ export function Testing() {
         </a>
         .
       </p>
+      <p>
+        <button onClick={() => reducerTest_startEditMode()}>
+          Run test case: Start Edit Mode
+        </button>
+      </p>
+      <p>
+        <button onClick={() => reducerTest_startSave()}>
+          Run test case: Start Save
+        </button>
+      </p>
     </>
   );
 }
 
-// Send actions and an initial state to the reducer,
-// validate the state and effects it returns
-function reducerTest() {
-  const effects = [];
-  const mockExec = (((effect: InlineEditorEffect) =>
-    effects.push(effect)) as unknown) as EffectReducerExec<
-    InlineEditorState,
-    InlineEditorAction,
-    InlineEditorEffect
-  >;
+async function reducerTest_startEditMode() {
+  console.log('Starting reducer test');
 
-  const prevState: InlineEditorState = {
+  const readonlyModeState: InlineEditorState = {
+    isBusySaving: false,
+    isEditing: false,
+    editorValue: 'Nothing to see here',
+    savedValue: 'the original value',
+  };
+
+  const expectedState_editMode: InlineEditorState = {
+    isBusySaving: false,
+    isEditing: true,
+    editorValue: 'the original value',
+    savedValue: 'the original value',
+  };
+
+  const telemetrySpy = testSpy('emitTelemetry');
+  const saveToApiSpy = testSpy('saveToApi');
+
+  const { result, waitForNextUpdate } = renderHook(() =>
+    useEffectReducer(inlineEditorReducer, readonlyModeState, {
+      emitTelemetry: (state, effect) => telemetrySpy(effect),
+      saveToApi: (state, effect) => saveToApiSpy(effect),
+    })
+  );
+
+  const dispatch = result.current[1];
+  dispatch({ type: 'START_EDITING' });
+  await waitForNextUpdate();
+
+  const resultState = result.current[0];
+  testExpect(resultState).toEqual(expectedState_editMode);
+
+  testExpect(telemetrySpy.callCount).toEqual(
+    1,
+    'Expected telemetry to have been called once'
+  );
+  testExpect(saveToApiSpy.callCount).toEqual(
+    0,
+    'Expected save to have been called zero times'
+  );
+
+  console.log('%cTest passed!', 'color: green');
+}
+
+async function reducerTest_startSave() {
+  console.log('Starting reducer test');
+
+  const editModeState: InlineEditorState = {
     isBusySaving: false,
     isEditing: true,
     editorValue: 'Save me',
     savedValue: 'the original value',
   };
 
-  const nextState = inlineEditorReducer(
-    prevState,
-    { type: 'START_SAVE' },
-    mockExec
+  const expectedState_busySaving: InlineEditorState = {
+    ...editModeState,
+    isBusySaving: true,
+  };
+
+  const telemetrySpy = testSpy('emitTelemetry');
+  const saveToApiSpy = testSpy('saveToApi');
+
+  const { result, waitForNextUpdate } = renderHook(() =>
+    useEffectReducer(inlineEditorReducer, editModeState, {
+      emitTelemetry: (state, effect) => telemetrySpy(effect),
+      saveToApi: (state, effect) => saveToApiSpy(effect),
+    })
   );
+
+  const dispatch = result.current[1];
+  dispatch({ type: 'START_SAVE' });
+  await waitForNextUpdate();
+
+  const resultState = result.current[0];
+  testExpect(resultState).toEqual(expectedState_busySaving);
+
+  testExpect(telemetrySpy.callCount).toEqual(
+    1,
+    'Expected telemetry to have been called once'
+  );
+  testExpect(saveToApiSpy.callCount).toEqual(
+    1,
+    'Expected save to have been called once'
+  );
+
+  console.log('%cTest passed!', 'color: green');
 }
+
+//
+// The effect reducer is defined below, same as in the previous slide
+//
 
 type InlineEditorState = {
   readonly savedValue: string;
