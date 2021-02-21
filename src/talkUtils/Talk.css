@@ -4,7 +4,7 @@
   flex-direction: column;
   max-width: 100%;
   font-size: 20px;
-  line-height: 1.2em;
+  line-height: 1.2;
   font-family: 'Public Sans', Verdana, Geneva, sans-serif;
 }
 
@@ -21,12 +21,20 @@
 }
 
 .vertical-paragraph-spacer {
-  height: 20px;
+  height: 0;
+  margin-top: 40px;
 }
 
 .monospaced {
   font-family: monospace;
   background-color: rgba(27, 31, 35, 0.1);
+}
+
+.mono-block {
+  padding: 8px;
+}
+.mono-block pre {
+  margin: 0;
 }
 
 .strikethrough {
