@@ -9,13 +9,18 @@ export function SideEffects() {
         handle side effects.
       </p>
       <p>
-        A <em>side effect</em> is any action initiated by the component that
+        A <em>side effect</em> is something initiated by the component that
         affects something outside the component:
       </p>
       <ul>
-        <li>"Fire-and-forget" actions (e.g. telemetry, set browser title)</li>
+        <li>
+          Single-use "Fire-and-forget" effects (e.g. telemetry, set browser
+          title)
+        </li>
         <li>Async/promises (e.g. fetch data from an API)</li>
-        <li>Long-running actions (e.g. start a timer, setInterval)</li>
+        <li>
+          Long-running actions (e.g. start a timer, setInterval, subscribe)
+        </li>
       </ul>
       <p>
         In React, <Mono>useEffect</Mono> works well when we want to{' '}

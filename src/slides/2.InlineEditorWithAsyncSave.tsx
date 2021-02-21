@@ -5,7 +5,7 @@ export function InlineEditorWithAsyncSave() {
   return (
     <>
       <Description />
-      <InlineEditor />
+      <InlineEditorWidget />
     </>
   );
 }
@@ -30,7 +30,7 @@ function Description() {
   );
 }
 
-function InlineEditor() {
+function InlineEditorWidget() {
   const [savedValue, setSavedValue] = useState('Edit me!');
   const [editorValue, setEditorValue] = useState(savedValue);
   const [isEditing, setIsEditing] = useState(false);

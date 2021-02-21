@@ -1,7 +1,11 @@
 import { Dispatch } from 'react';
 import { EffectReducer, useEffectReducer } from 'use-effect-reducer';
 import { assertUnreachable } from '../codeUtils/assertUnreachable';
-import { Mono, MonoBlock } from '../talkUtils/FormatAndLayoutComponents';
+import {
+  Mono,
+  MonoBlock,
+  VerticalSpacer,
+} from '../talkUtils/FormatAndLayoutComponents';
 
 const effectReducerExample = `const [state, dispatch] =
   useEffectReducer(
@@ -33,7 +37,9 @@ export function UseEffectReducerSlide() {
           functions that perform the effects
         </li>
       </ul>
-      <InlineEditor />
+      <VerticalSpacer />
+      <p>The widget with async save, implemented with an effect reducer:</p>
+      <InlineEditorWidget />
     </>
   );
 }
@@ -63,16 +69,16 @@ type InlineEditorEffect =
       message: string;
     }
   | {
-      type: 'saveToApi';
+      type: 'saveViaApi';
       value: string;
     };
 
 // In the original implementation of `doSave` (without the reducer), we set `isBusySaving` to true
 // after awaiting the async result. But now the reducer handles all the state management, and
 // this async function is very lightweight, dealing only with the "API call".
-async function saveToApi(value: string) {
+async function saveViaApi(value: string) {
   await new Promise((resolve) => setTimeout(resolve, 1000));
-  console.log(`Saved ${value}`);
+  console.log(`Saved "${value}"`);
 }
 
 // In TypeScript, we give the effect reducer all three shapes: state, action, effect
@@ -100,12 +106,12 @@ const inlineEditorReducer: EffectReducer<
     case 'START_SAVE':
       // Originally, the Save button invoked the `doSave` async function, which did a combination of
       // state updates and the actual API call. Now, the button dispatches the START_SAVE action,
-      // which makes its way to here. We simultaneously update state and execute the `saveToApi`
+      // which makes its way to here. We simultaneously update state and execute the `saveViaApi`
       // side effect, which will dispatch a single FINISH_SAVE action when it completes.
       //
       // This may seem needlessly indirect, but it keeps more of the transition/effect logic in the
       // reducer where it's easier to control and test.
-      exec({ type: 'saveToApi', value: prevState.editorValue });
+      exec({ type: 'saveViaApi', value: prevState.editorValue });
       exec({ type: 'emitTelemetry', message: 'Starting save' });
       return {
         ...prevState,
@@ -138,7 +144,9 @@ const initialInlineEditorState: InlineEditorState = {
   isBusySaving: false,
 };
 
-function InlineEditor() {
+function InlineEditorWidget() {
+  // Set up the reducer as before, but also define the actual behaviors for each of the possible
+  // side effects
   const [state, dispatch] = useEffectReducer(
     inlineEditorReducer,
     initialInlineEditorState,
@@ -146,18 +154,22 @@ function InlineEditor() {
       emitTelemetry: (state, effect) => {
         console.log(effect.message);
       },
-      saveToApi: (state, effect, dispatch) =>
-        void saveToApi(effect.value).then(() =>
+      saveViaApi: (state, effect, dispatch) =>
+        void saveViaApi(effect.value).then(() =>
           dispatch({ type: 'FINISH_SAVE' })
         ),
     }
   );
+
+  // The rest of this file is the same as it was with useReducer,
+  // except that we're now disabling the inputs when `isBusySaving` is true
 
   return (
     <form className="inline-editor-box">
       {state.isEditing ? (
         <InlineEditorEditMode
           editorValue={state.editorValue}
+          isBusySaving={state.isBusySaving}
           dispatch={dispatch}
         />
       ) : (
@@ -186,16 +198,16 @@ function InlineEditorReadonlyMode(props: {
   );
 }
 
-// Each of these display components could be tested in isolation if we want.
-// The single `dispatch` cuts down on the number of props.
 function InlineEditorEditMode(props: {
   editorValue: string;
+  isBusySaving: boolean;
   dispatch: Dispatch<InlineEditorAction>;
 }) {
   return (
     <>
       <input
         value={props.editorValue}
+        disabled={props.isBusySaving}
         onChange={(event) =>
           props.dispatch({ type: 'EDIT_VALUE', value: event.target.value })
         }
@@ -203,6 +215,7 @@ function InlineEditorEditMode(props: {
       <div>
         <button
           type="reset"
+          disabled={props.isBusySaving}
           onClick={(event) => {
             event.preventDefault();
             props.dispatch({ type: 'CANCEL' });
@@ -212,12 +225,13 @@ function InlineEditorEditMode(props: {
         </button>
         <button
           type="submit"
+          disabled={props.isBusySaving}
           onClick={(event) => {
             event.preventDefault();
             props.dispatch({ type: 'START_SAVE' });
           }}
         >
-          Save
+          {props.isBusySaving ? 'Saving…' : 'Save'}
         </button>
       </div>
     </>

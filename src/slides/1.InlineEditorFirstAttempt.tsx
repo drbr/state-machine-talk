@@ -4,7 +4,7 @@ export function InlineEditorFirstAttempt() {
   return (
     <>
       <Description />
-      <InlineEditor />
+      <InlineEditorWidget />
     </>
   );
 }
@@ -23,7 +23,7 @@ function Description() {
   );
 }
 
-function InlineEditor() {
+function InlineEditorWidget() {
   // Keep track of the state in readonly and edit modes
   const [savedValue, setSavedValue] = useState('Edit me!');
   const [editorValue, setEditorValue] = useState(savedValue);

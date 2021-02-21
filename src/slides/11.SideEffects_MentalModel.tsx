@@ -4,11 +4,11 @@ import { MonoBlock } from '../talkUtils/FormatAndLayoutComponents';
 const formula = `(previousState, action) =>
   (nextState, sideEffects)`;
 
-export function SideEffects_ExtendTheReducerFormula() {
+export function SideEffects_MentalModel() {
   return (
     <>
-      <h1>Side Effects</h1>
-      <h2>Add side effects to the reducer formula:</h2>
+      <h1>Side Effects: Mental Model</h1>
+      <p>Add side effects to the output of the reducer formula:</p>
       <MonoBlock>{formula}</MonoBlock>
       <p>
         The reducer does not actually execute side effects, it only{' '}
@@ -26,14 +26,14 @@ export function SideEffects_ExtendTheReducerFormula() {
   );
 }
 
-// Since effects are like "the opposite of actions", I'll define them as objects for this example.
-// We can make them type-safe in the same way.
+// Since effects are like "the opposite of actions", I'll represent them as objects for this
+// example. We can make them type-safe in the same way.
 type InlineEditorEffect =
+  | {
+      type: 'saveViaApi';
+      value: string;
+    }
   | {
       type: 'emitTelemetry';
       message: string;
-    }
-  | {
-      type: 'doSave';
-      value: string;
     };

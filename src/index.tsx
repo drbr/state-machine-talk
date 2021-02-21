@@ -3,10 +3,10 @@ import './index.css';
 import { Introduction } from './slides/0.Introduction';
 import { InlineEditorFirstAttempt } from './slides/1.InlineEditorFirstAttempt';
 import { SideEffects } from './slides/10.SideEffects';
-import { SideEffects_ExtendTheReducerFormula } from './slides/11.SideEffects_ExtendTheReducerFormula';
+import { SideEffects_MentalModel } from './slides/11.SideEffects_MentalModel';
 import { UseEffectReducerSlide } from './slides/12.useEffectReducer';
-import { Testing } from './slides/13.Testing';
-import { Part2Conclusion } from './slides/14.Part2Conclusion';
+import { Testing } from './slides/20.Testing';
+import { Part2Conclusion } from './slides/13.Part2Conclusion';
 import { InlineEditorWithAsyncSave } from './slides/2.InlineEditorWithAsyncSave';
 import { ThisIsGettingOutOfHand as IsThisCodeGood } from './slides/3.IsThisCodeGood';
 import { TheReducerPattern } from './slides/4.TheReducerPattern';
@@ -69,19 +69,15 @@ export const SlidePluginManager = new PluginManager<SlidePlugin>(
     element: <SideEffects />,
   },
   {
-    name: '11. Side Effects – Extend the reducer formula',
-    element: <SideEffects_ExtendTheReducerFormula />,
+    name: '11. Side Effects – Mental Model',
+    element: <SideEffects_MentalModel />,
   },
   {
     name: '12. useEffectReducer',
     element: <UseEffectReducerSlide />,
   },
   {
-    name: '13. Testing',
-    element: <Testing />,
-  },
-  {
-    name: '14. Part 2 Conclusion',
+    name: '13. Part 2 Conclusion',
     element: <Part2Conclusion />,
   }
 );

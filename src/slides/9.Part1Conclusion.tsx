@@ -11,14 +11,13 @@ export function Part1Conclusion() {
         parent of several components, or even in a service.
       </p>
       <p>
-        Using reducers and <Mono>dispatch</Mono> has several advantages:
+        Using reducers and <Mono>dispatch</Mono>ing actions has several
+        advantages:
       </p>
       <ul>
         <li>Helps us understand what each UI element callback actually does</li>
         <li>Decouples state logic from display code</li>
-        <li>
-          All the state logic is encapsulated in one easily-testable function
-        </li>
+        <li>State logic is encapsulated in one easily-testable function</li>
         <li>
           Child components don't need to be concerned with the details of the
           parent's state

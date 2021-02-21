@@ -1,6 +1,10 @@
-import React, { useReducer } from 'react';
+import React, { Dispatch, useReducer } from 'react';
 import { assertUnreachable } from '../codeUtils/assertUnreachable';
-import { Mono, MonoBlock } from '../talkUtils/FormatAndLayoutComponents';
+import {
+  Mono,
+  MonoBlock,
+  VerticalSpacer,
+} from '../talkUtils/FormatAndLayoutComponents';
 
 const reducerExample = `const [state, dispatch] = useReducer(
   reducer, initialState
@@ -30,7 +34,9 @@ export function UseReducerHook() {
         functions, we'll dispatch actions instead. React will send that action
         through the reducer and update the state.
       </p>
-      <InlineEditor />
+      <VerticalSpacer />
+      <p>Here is the non-async version of our widget:</p>
+      <InlineEditorWidget />
     </>
   );
 }
@@ -90,31 +96,60 @@ const initialInlineEditorState: InlineEditorState = {
   isEditing: false,
 };
 
-function InlineEditor() {
+function InlineEditorWidget() {
   // Instead of having three separate useState instances, we have a single reducer
   const [state, dispatch] = useReducer(
     inlineEditorReducer,
     initialInlineEditorState
   );
 
-  const readonlyView = (
+  // Now, because we just have one dispatch (instead of several state setters),
+  // it's easier to pull out the display components without needing to pass down
+  // several props for all the different state fields that need to be updated.
+  return (
+    <form className="inline-editor-box">
+      {state.isEditing ? (
+        <InlineEditorEditMode
+          editorValue={state.editorValue}
+          dispatch={dispatch}
+        />
+      ) : (
+        <InlineEditorReadonlyMode
+          savedValue={state.savedValue}
+          dispatch={dispatch}
+        />
+      )}
+    </form>
+  );
+}
+
+function InlineEditorReadonlyMode(props: {
+  savedValue: string;
+  dispatch: Dispatch<InlineEditorAction>;
+}) {
+  return (
     <>
-      <span>{state.savedValue}</span>
+      <span>{props.savedValue}</span>
       <div>
         {/* Instead of manually updating the state, we dispatch events */}
-        <button onClick={() => dispatch({ type: 'START_EDITING' })}>
+        <button onClick={() => props.dispatch({ type: 'START_EDITING' })}>
           Edit
         </button>
       </div>
     </>
   );
+}
 
-  const editingView = (
+function InlineEditorEditMode(props: {
+  editorValue: string;
+  dispatch: Dispatch<InlineEditorAction>;
+}) {
+  return (
     <>
       <input
-        value={state.editorValue}
+        value={props.editorValue}
         onChange={(event) =>
-          dispatch({ type: 'EDIT_VALUE', value: event.target.value })
+          props.dispatch({ type: 'EDIT_VALUE', value: event.target.value })
         }
       />
       <div>
@@ -122,7 +157,7 @@ function InlineEditor() {
           type="reset"
           onClick={(event) => {
             event.preventDefault();
-            dispatch({ type: 'CANCEL' });
+            props.dispatch({ type: 'CANCEL' });
           }}
         >
           Cancel
@@ -131,18 +166,12 @@ function InlineEditor() {
           type="submit"
           onClick={(event) => {
             event.preventDefault();
-            dispatch({ type: 'SAVE' });
+            props.dispatch({ type: 'SAVE' });
           }}
         >
           Save
         </button>
       </div>
     </>
-  );
-
-  return (
-    <form className="inline-editor-box">
-      {state.isEditing ? editingView : readonlyView}
-    </form>
   );
 }
