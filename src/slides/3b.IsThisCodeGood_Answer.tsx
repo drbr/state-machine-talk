@@ -1,7 +1,7 @@
 import React from 'react';
 import { VerticalSpacer, Mono } from '../talkUtils/FormatAndLayoutComponents';
 
-export function ThisIsGettingOutOfHand() {
+export function IsThisCodeGood_Answer() {
   return (
     <>
       <h1>Is this code good?</h1>

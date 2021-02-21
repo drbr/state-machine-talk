@@ -14,10 +14,10 @@ export function Part2Conclusion() {
       <p>With Side Effects, we've completed the model of the system.</p>
       <MonoBlock>{formula}</MonoBlock>
       <p>
-        This formula is capable of describing almost <em>any</em> stateful logic
-        in a pure, self-contained way!
+        This formula is capable of describing almost any stateful logic in a
+        pure, self-contained way!
       </p>
-      <p>To recap:</p>
+      <p>Recap:</p>
       <ul>
         <li>
           <strong>State</strong> is persisted in the system
@@ -35,9 +35,6 @@ export function Part2Conclusion() {
         effect behaviors), which gets interpreted by a runtime framework to
         persist state and execute effects.
       </p>
-      <VerticalSpacer />
-      <h2>Is this pattern testable?</h2>
-      <p>Yes … stay tuned!</p>
     </>
   );
 }

@@ -8,7 +8,7 @@ import { UseEffectReducerSlide } from './slides/12.useEffectReducer';
 import { Testing } from './slides/20.Testing';
 import { Part2Conclusion } from './slides/13.Part2Conclusion';
 import { InlineEditorWithAsyncSave } from './slides/2.InlineEditorWithAsyncSave';
-import { ThisIsGettingOutOfHand as IsThisCodeGood } from './slides/3.IsThisCodeGood';
+import { IsThisCodeGood_Question } from './slides/3a.IsThisCodeGood_Question';
 import { TheReducerPattern } from './slides/4.TheReducerPattern';
 import { ReducerInCode_Actions } from './slides/5.ReducerInCode_Actions';
 import { ReducerInCode_SwitchStatement } from './slides/6.ReducerInCode_SwitchStatement';
@@ -18,6 +18,9 @@ import { Part1Conclusion } from './slides/9.Part1Conclusion';
 import { BasePlugin, PluginManager } from './talkUtils/PluginManager';
 import { PluginSelectorDropdown } from './talkUtils/PluginSelectorDropdown';
 import { renderSlide } from './talkUtils/renderSlide';
+import { IsThisCodeGood_Answer } from './slides/3b.IsThisCodeGood_Answer';
+import { IsTheCodeGoodNow } from './slides/14a.IsTheCodeGoodNow';
+import { IsTheCodeGoodNow_ProblemsWithState } from './slides/14b.IsTheCodeGoodNow_ProblemsWithState';
 
 export interface SlidePlugin extends BasePlugin {
   element: React.ReactElement;
@@ -37,8 +40,12 @@ export const SlidePluginManager = new PluginManager<SlidePlugin>(
     element: <InlineEditorWithAsyncSave />,
   },
   {
-    name: '3. Is this code good?',
-    element: <IsThisCodeGood />,
+    name: '3a. Is this code good?',
+    element: <IsThisCodeGood_Question />,
+  },
+  {
+    name: '3. Is this code good? Answer',
+    element: <IsThisCodeGood_Answer />,
   },
   {
     name: '4. The Reducer Pattern',
@@ -79,6 +86,14 @@ export const SlidePluginManager = new PluginManager<SlidePlugin>(
   {
     name: '13. Part 2 Conclusion',
     element: <Part2Conclusion />,
+  },
+  {
+    name: '14a. Is the code good now?',
+    element: <IsTheCodeGoodNow />,
+  },
+  {
+    name: '14b. Is the code good now? Problems with state',
+    element: <IsTheCodeGoodNow_ProblemsWithState />,
   }
 );
 
