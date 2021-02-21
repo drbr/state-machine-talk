@@ -40,8 +40,9 @@ function InlineEditor() {
 
   async function doSave(value: string) {
     setIsBusySaving(true);
-    // Pretend to call the API
+    // Pretend to call an API
     await new Promise((resolve) => setTimeout(resolve, 1000));
+    console.log(`Saved ${value}`);
     setSavedValue(value);
     setIsEditing(false);
     setIsBusySaving(false);

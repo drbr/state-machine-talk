@@ -5,6 +5,8 @@ import { InlineEditorFirstAttempt } from './slides/1.InlineEditorFirstAttempt';
 import { SideEffects } from './slides/10.SideEffects';
 import { SideEffects_ExtendTheReducerFormula } from './slides/11.SideEffects_ExtendTheReducerFormula';
 import { UseEffectReducerSlide } from './slides/12.useEffectReducer';
+import { Testing } from './slides/13.Testing';
+import { Part2Conclusion } from './slides/14.Part2Conclusion';
 import { InlineEditorWithAsyncSave } from './slides/2.InlineEditorWithAsyncSave';
 import { ThisIsGettingOutOfHand as IsThisCodeGood } from './slides/3.IsThisCodeGood';
 import { TheReducerPattern } from './slides/4.TheReducerPattern';
@@ -73,6 +75,14 @@ export const SlidePluginManager = new PluginManager<SlidePlugin>(
   {
     name: '12. useEffectReducer',
     element: <UseEffectReducerSlide />,
+  },
+  {
+    name: '13. Testing',
+    element: <Testing />,
+  },
+  {
+    name: '14. Part 2 Conclusion',
+    element: <Part2Conclusion />,
   }
 );
 

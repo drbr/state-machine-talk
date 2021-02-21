@@ -1,53 +1,46 @@
 import { Dispatch } from 'react';
 import { EffectReducer, useEffectReducer } from 'use-effect-reducer';
 import { assertUnreachable } from '../codeUtils/assertUnreachable';
-import { Mono, MonoBlock } from '../talkUtils/FormatAndLayoutComponents';
 
-const effectReducerExample = `const [state, dispatch] =
-  useEffectReducer(
-    reducer, initialState, effectMap
-  );
-`;
-
-export function UseEffectReducerSlide() {
+export function Testing() {
   return (
     <>
-      <h1>useEffectReducer</h1>
-      <p>
-        With the reducer now returning side effects, the runtime framework needs
-        to execute those effects.
-      </p>
-      <p>
-        We could build a framework to return effect descriptors in the state and
-        execute them with <Mono>useEffect</Mono>, but managing long-running
-        effects correctly is tricky, so let's use the 3rd-party{' '}
-        <a href="https://github.com/davidkpiano/useEffectReducer">
-          <Mono>useEffectReducer</Mono>
-        </a>{' '}
-        hook instead.
-      </p>
-      <MonoBlock>{effectReducerExample}</MonoBlock>
+      <h1>How do we test this?</h1>
+      <p>Depends on the use case and complexity.</p>
       <ul>
         <li>
-          <strong>EffectMap:</strong> A mapping of effect descriptors to
-          functions that perform the effects
+          Test the entire component (try{' '}
+          <a href="https://testing-library.com/docs/react-testing-library/">
+            React Testing Library
+          </a>
+          )
         </li>
+        <li>or test the reducer and display components in isolation.</li>
       </ul>
-      <InlineEditor />
     </>
   );
+}
+
+// Send actions and an initial state to the reducer,
+// validate the state and effects it returns
+function testReducer() {
+  const effects = [];
+  const mockExec = (effect: InlineEditorEffect) => effects.push(effect);
+}
+
+// Test the readonly and edit mode components in isolation,
+// validate that "dispatch" was called with the expected action
+function testComponentDisplay() {
+  const mockDispatch = jest.fn();
 }
 
 type InlineEditorState = {
   readonly savedValue: string;
   readonly editorValue: string;
   readonly isEditing: boolean;
-  // Reïntroduce boolean to represent the busy state
   readonly isBusySaving: boolean;
 };
 
-// Because we're dispatching actions from the async effect,
-// the SAVE action now becomes two actions: START_SAVE and FINISH_SAVE
 type InlineEditorAction =
   | {
       type: 'START_EDITING' | 'CANCEL' | 'START_SAVE' | 'FINISH_SAVE';
@@ -67,15 +60,13 @@ type InlineEditorEffect =
       value: string;
     };
 
-// In the original implementation of `doSave` (without the reducer), we set `isBusySaving` to true
-// after awaiting the async result. But now the reducer handles all the state management, and
-// this async function is very lightweight, dealing only with the "API call".
 async function saveToApi(value: string) {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   console.log(`Saved ${value}`);
 }
 
-// In TypeScript, we give the effect reducer all three shapes: state, action, effect
+// The reducer can be tested in isolation – just validate that the input and output objects are
+// as we expect
 const inlineEditorReducer: EffectReducer<
   InlineEditorState,
   InlineEditorAction,
@@ -83,10 +74,6 @@ const inlineEditorReducer: EffectReducer<
 > = function inlineEditorReducer(prevState, action, exec): InlineEditorState {
   switch (action.type) {
     case 'START_EDITING':
-      // The effect reducer hook provides an `exec` function, which, despite its name, merely adds
-      // the effect to the list of effects to execute on this transition. So, given a simple
-      // implementation of `exec` (e.g. array.push), this reducer is still an easily-testable pure
-      // function.
       exec({ type: 'emitTelemetry', message: 'Starting edit' });
       return {
         savedValue: prevState.savedValue,
@@ -100,13 +87,6 @@ const inlineEditorReducer: EffectReducer<
         editorValue: action.value,
       };
     case 'START_SAVE':
-      // Originally, the Save button invoked the `doSave` async function, which did a combination of
-      // state updates and the actual API call. Now, the button dispatches the START_SAVE action,
-      // which makes its way to here. We simultaneously update state and execute the `saveToApi`
-      // side effect, which will dispatch a single FINISH_SAVE action when it completes.
-      //
-      // This may seem needlessly indirect, but it keeps more of the transition/effect logic in the
-      // reducer where it's easier to control and test.
       exec({ type: 'saveToApi', value: prevState.editorValue });
       exec({ type: 'emitTelemetry', message: 'Starting save' });
       return {
