@@ -17,11 +17,24 @@ export function Part2Conclusion() {
         This formula is capable of describing almost <em>any</em> stateful logic
         in a pure, self-contained way!
       </p>
+      <p>To recap:</p>
       <ul>
-        <li>State lives in the system</li>
-        <li>Actions happen from the outside and affect the system</li>
-        <li>Effects are emitted from the system and affect the outside</li>
+        <li>
+          <strong>State</strong> is persisted in the system
+        </li>
+        <li>
+          <strong>Actions</strong> happen from the outside and affect the system
+        </li>
+        <li>
+          <strong>Effects</strong> are emitted from the system and affect the
+          outside
+        </li>
       </ul>
+      <p>
+        All the state-update logic can be contained in the reducer (and the
+        effect behaviors), which gets interpreted by a runtime framework to
+        persist state and execute effects.
+      </p>
       <VerticalSpacer />
       <h2>Is this pattern testable?</h2>
       <p>Yes … stay tuned!</p>
