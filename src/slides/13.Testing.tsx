@@ -16,7 +16,7 @@ export function Testing() {
       <p>Depends on the use case and complexity.</p>
       <ul>
         <li>
-          Test the entire component as a user would (using{' '}
+          We could test the entire component as a user would (using{' '}
           <a href="https://testing-library.com/docs/react-testing-library/">
             React Testing Library
           </a>{' '}
@@ -24,7 +24,6 @@ export function Testing() {
         </li>
         <li>or test the reducer and display components in isolation.</li>
       </ul>
-      <VerticalSpacer />
       <p>
         For a reducer without effects, simply pass in arguments and check the
         result:
@@ -37,7 +36,7 @@ export function Testing() {
       <VerticalSpacer />
       <p>
         <Mono>useEffectReducer</Mono> does break the "no libraries" purity, but
-        the coupling is minimal. We can test our effect reducer in context using{' '}
+        the coupling is minimal. We can test the effect reducer using{' '}
         <a href="https://react-hooks-testing-library.com/">
           React Hooks Testing Library
         </a>
@@ -60,14 +59,14 @@ export function Testing() {
 async function reducerTest_startEditMode() {
   console.log('Starting reducer test');
 
-  const readonlyModeState: InlineEditorState = {
+  const initialState_readonlyMode: InlineEditorState = {
     isBusySaving: false,
     isEditing: false,
     editorValue: 'Nothing to see here',
     savedValue: 'the original value',
   };
 
-  const expectedState_editMode: InlineEditorState = {
+  const expectedResultState_editMode: InlineEditorState = {
     isBusySaving: false,
     isEditing: true,
     editorValue: 'the original value',
@@ -78,7 +77,7 @@ async function reducerTest_startEditMode() {
   const saveToApiSpy = testSpy('saveToApi');
 
   const { result, waitForNextUpdate } = renderHook(() =>
-    useEffectReducer(inlineEditorReducer, readonlyModeState, {
+    useEffectReducer(inlineEditorReducer, initialState_readonlyMode, {
       emitTelemetry: (state, effect) => telemetrySpy(effect),
       saveToApi: (state, effect) => saveToApiSpy(effect),
     })
@@ -89,7 +88,7 @@ async function reducerTest_startEditMode() {
   await waitForNextUpdate();
 
   const resultState = result.current[0];
-  testExpect(resultState).toEqual(expectedState_editMode);
+  testExpect(resultState).toEqual(expectedResultState_editMode);
 
   testExpect(telemetrySpy.callCount).toEqual(
     1,
@@ -106,15 +105,15 @@ async function reducerTest_startEditMode() {
 async function reducerTest_startSave() {
   console.log('Starting reducer test');
 
-  const editModeState: InlineEditorState = {
+  const initialState_editMode: InlineEditorState = {
     isBusySaving: false,
     isEditing: true,
     editorValue: 'Save me',
     savedValue: 'the original value',
   };
 
-  const expectedState_busySaving: InlineEditorState = {
-    ...editModeState,
+  const expectedResultState_busySaving: InlineEditorState = {
+    ...initialState_editMode,
     isBusySaving: true,
   };
 
@@ -122,7 +121,7 @@ async function reducerTest_startSave() {
   const saveToApiSpy = testSpy('saveToApi');
 
   const { result, waitForNextUpdate } = renderHook(() =>
-    useEffectReducer(inlineEditorReducer, editModeState, {
+    useEffectReducer(inlineEditorReducer, initialState_editMode, {
       emitTelemetry: (state, effect) => telemetrySpy(effect),
       saveToApi: (state, effect) => saveToApiSpy(effect),
     })
@@ -133,7 +132,7 @@ async function reducerTest_startSave() {
   await waitForNextUpdate();
 
   const resultState = result.current[0];
-  testExpect(resultState).toEqual(expectedState_busySaving);
+  testExpect(resultState).toEqual(expectedResultState_busySaving);
 
   testExpect(telemetrySpy.callCount).toEqual(
     1,
