@@ -15,9 +15,9 @@ export function Introduction() {
       <VerticalSpacer />
       <p>This talk has three sections:</p>
       <ol>
-        <li>Actions</li>
+        <li>Reducers and Actions</li>
         <li>Side Effects</li>
-        <li>States</li>
+        <li>State Machines</li>
       </ol>
       <p>
         Yes, the slides have a lot of words. This is an a11y feature. Watch or
