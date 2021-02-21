@@ -1,6 +1,15 @@
-import { Dispatch } from 'react';
-import { EffectReducer, useEffectReducer } from 'use-effect-reducer';
+import React, { Dispatch } from 'react';
+import {
+  EffectReducer,
+  EffectReducerExec,
+  useEffectReducer,
+} from 'use-effect-reducer';
 import { assertUnreachable } from '../codeUtils/assertUnreachable';
+import {
+  Mono,
+  MonoBlock,
+  VerticalSpacer,
+} from '../talkUtils/FormatAndLayoutComponents';
 
 export function Testing() {
   return (
@@ -9,29 +18,60 @@ export function Testing() {
       <p>Depends on the use case and complexity.</p>
       <ul>
         <li>
-          Test the entire component (try{' '}
+          Test the entire component as a user would (using{' '}
           <a href="https://testing-library.com/docs/react-testing-library/">
             React Testing Library
-          </a>
-          )
+          </a>{' '}
+          or <a href="https://enzymejs.github.io/enzyme/">Enzyme</a>),
         </li>
         <li>or test the reducer and display components in isolation.</li>
       </ul>
+      <VerticalSpacer />
+      <p>
+        For a reducer without effects, simply pass in arguments and check the
+        result:
+      </p>
+      <MonoBlock>
+        const result = myReducer(prevState, action);
+        <br />
+        expect(result).to.equal(expected);
+      </MonoBlock>
+      <VerticalSpacer />
+      <p>
+        <Mono>useEffectReducer</Mono> does break the "no libraries" purity, but
+        the coupling is minimal. We can test our effect reducer in context using{' '}
+        <a href="https://react-hooks-testing-library.com/">
+          React Hooks Testing Library
+        </a>
+        .
+      </p>
     </>
   );
 }
 
 // Send actions and an initial state to the reducer,
 // validate the state and effects it returns
-function testReducer() {
+function reducerTest() {
   const effects = [];
-  const mockExec = (effect: InlineEditorEffect) => effects.push(effect);
-}
+  const mockExec = (((effect: InlineEditorEffect) =>
+    effects.push(effect)) as unknown) as EffectReducerExec<
+    InlineEditorState,
+    InlineEditorAction,
+    InlineEditorEffect
+  >;
 
-// Test the readonly and edit mode components in isolation,
-// validate that "dispatch" was called with the expected action
-function testComponentDisplay() {
-  const mockDispatch = jest.fn();
+  const prevState: InlineEditorState = {
+    isBusySaving: false,
+    isEditing: true,
+    editorValue: 'Save me',
+    savedValue: 'the original value',
+  };
+
+  const nextState = inlineEditorReducer(
+    prevState,
+    { type: 'START_SAVE' },
+    mockExec
+  );
 }
 
 type InlineEditorState = {
@@ -60,13 +100,6 @@ type InlineEditorEffect =
       value: string;
     };
 
-async function saveToApi(value: string) {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  console.log(`Saved ${value}`);
-}
-
-// The reducer can be tested in isolation – just validate that the input and output objects are
-// as we expect
 const inlineEditorReducer: EffectReducer<
   InlineEditorState,
   InlineEditorAction,
@@ -112,96 +145,3 @@ const inlineEditorReducer: EffectReducer<
       return prevState;
   }
 };
-
-const initialInlineEditorState: InlineEditorState = {
-  savedValue: 'Edit me!',
-  editorValue: 'I get overwritten when edit mode starts so I can be anything',
-  isEditing: false,
-  isBusySaving: false,
-};
-
-function InlineEditor() {
-  const [state, dispatch] = useEffectReducer(
-    inlineEditorReducer,
-    initialInlineEditorState,
-    {
-      emitTelemetry: (state, effect) => {
-        console.log(effect.message);
-      },
-      saveToApi: (state, effect, dispatch) =>
-        void saveToApi(effect.value).then(() =>
-          dispatch({ type: 'FINISH_SAVE' })
-        ),
-    }
-  );
-
-  return (
-    <form className="inline-editor-box">
-      {state.isEditing ? (
-        <InlineEditorEditMode
-          editorValue={state.editorValue}
-          dispatch={dispatch}
-        />
-      ) : (
-        <InlineEditorReadonlyMode
-          savedValue={state.savedValue}
-          dispatch={dispatch}
-        />
-      )}
-    </form>
-  );
-}
-
-function InlineEditorReadonlyMode(props: {
-  savedValue: string;
-  dispatch: Dispatch<InlineEditorAction>;
-}) {
-  return (
-    <>
-      <span>{props.savedValue}</span>
-      <div>
-        <button onClick={() => props.dispatch({ type: 'START_EDITING' })}>
-          Edit
-        </button>
-      </div>
-    </>
-  );
-}
-
-// Each of these components could be tested in isolation if we want.
-// The single `dispatch` cuts down on the number of props.
-function InlineEditorEditMode(props: {
-  editorValue: string;
-  dispatch: Dispatch<InlineEditorAction>;
-}) {
-  return (
-    <>
-      <input
-        value={props.editorValue}
-        onChange={(event) =>
-          props.dispatch({ type: 'EDIT_VALUE', value: event.target.value })
-        }
-      />
-      <div>
-        <button
-          type="reset"
-          onClick={(event) => {
-            event.preventDefault();
-            props.dispatch({ type: 'CANCEL' });
-          }}
-        >
-          Cancel
-        </button>
-        <button
-          type="submit"
-          onClick={(event) => {
-            event.preventDefault();
-            props.dispatch({ type: 'START_SAVE' });
-          }}
-        >
-          Save
-        </button>
-      </div>
-    </>
-  );
-}

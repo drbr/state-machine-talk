@@ -9,7 +9,7 @@ export function Mono(props: { children: string }) {
 
 export function MonoBlock(props: { children: ReactNode }) {
   return (
-    <div className="monospaced">
+    <div className="monospaced mono-block">
       <pre>{props.children}</pre>
     </div>
   );

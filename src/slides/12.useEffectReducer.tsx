@@ -18,9 +18,9 @@ export function UseEffectReducerSlide() {
         to execute those effects.
       </p>
       <p>
-        We could build a framework to return effect descriptors in the state and
-        execute them with <Mono>useEffect</Mono>, but managing long-running
-        effects correctly is tricky, so let's use the 3rd-party{' '}
+        We could build a framework to take effect descriptors from the reducer
+        and execute them with <Mono>useEffect</Mono>, but managing long-running
+        effects correctly is tricky, so (in React) we can use the 3rd-party{' '}
         <a href="https://github.com/davidkpiano/useEffectReducer">
           <Mono>useEffectReducer</Mono>
         </a>{' '}
@@ -84,9 +84,7 @@ const inlineEditorReducer: EffectReducer<
   switch (action.type) {
     case 'START_EDITING':
       // The effect reducer hook provides an `exec` function, which, despite its name, merely adds
-      // the effect to the list of effects to execute on this transition. So, given a simple
-      // implementation of `exec` (e.g. array.push), this reducer is still an easily-testable pure
-      // function.
+      // the effect to the list of effects to execute on this transition.
       exec({ type: 'emitTelemetry', message: 'Starting edit' });
       return {
         savedValue: prevState.savedValue,
@@ -188,7 +186,7 @@ function InlineEditorReadonlyMode(props: {
   );
 }
 
-// Each of these components could be tested in isolation if we want.
+// Each of these display components could be tested in isolation if we want.
 // The single `dispatch` cuts down on the number of props.
 function InlineEditorEditMode(props: {
   editorValue: string;
