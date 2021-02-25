@@ -1,13 +1,13 @@
 import { renderHook } from '@testing-library/react-hooks/dom';
 import { EffectReducer, useEffectReducer } from 'use-effect-reducer';
-import { assertUnreachable } from '../codeUtils/assertUnreachable';
+import { assertUnreachable } from '../../codeUtils/assertUnreachable';
 import {
   Mono,
   MonoBlock,
   VerticalSpacer,
-} from '../talkUtils/FormatAndLayoutComponents';
-import { testExpect } from '../codeUtils/testAssert';
-import { testSpy } from '../codeUtils/testSpy';
+} from '../../talkUtils/FormatAndLayoutComponents';
+import { testExpect } from '../../codeUtils/testAssert';
+import { testSpy } from '../../codeUtils/testSpy';
 
 export function Slide_Testing() {
   return (
