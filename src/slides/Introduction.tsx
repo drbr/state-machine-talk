@@ -4,6 +4,7 @@ import {
   Mono,
   VerticalSpacer,
 } from '../talkUtils/FormatAndLayoutComponents';
+import { renderSlide } from '../talkUtils/renderSlide';
 
 export function Slide_Introduction() {
   return (
@@ -36,3 +37,4 @@ export function Slide_Introduction() {
     </>
   );
 }
+renderSlide(Slide_Introduction);
