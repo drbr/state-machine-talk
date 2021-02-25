@@ -124,16 +124,17 @@ export function Slide_StateMachineAsReducer() {
       </p>
       <p>Two common patterns:</p>
       <ul>
-        <li>Nested switch statements</li>
+        <li>Nested switch statements in reducer</li>
         <ul>
           <li>More familiar imperative style</li>
+          <li>Requires no extra layer to interpret</li>
         </ul>
         <li>Lookup table / Object</li>
         <ul>
-          <li>
-            More compact, machine definition is data instead of a function
-          </li>
-          <li>Easier to run analysis or visulization tools on such machines</li>
+          <li>More compact, arguably more readable</li>
+          <li>Machine definition is data instead of a function</li>
+          <li>Easier to run analysis/visulization tools</li>
+          <li>Needs an extra function to look up the value</li>
         </ul>
       </ul>
     </>

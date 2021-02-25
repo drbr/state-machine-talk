@@ -21,10 +21,6 @@ export function Slide_Introduction() {
         <li>Reducers and Actions</li>
         <li>State Machines</li>
       </ol>
-      <p>Future:</p>
-      <ul>
-        <li>Side Effects and async state management</li>
-      </ul>
       <VerticalSpacer />
       <p>
         Yes, the slides have a lot of words. This is an a11y feature. Watch or
