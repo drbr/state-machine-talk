@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import './Talk.css';
 
 /*
- * Borrowed from:
+ * This code is copied from:
  * https://github.com/hasparus/react-typescript-talk/blob/master/src/talkUtils/render.tsx
  */
 

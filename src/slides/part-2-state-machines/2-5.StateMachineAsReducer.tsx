@@ -1,3 +1,5 @@
+import { renderSlide } from '../../talkUtils/renderSlide';
+
 export function Slide_StateMachineAsReducer() {
   return (
     <>
@@ -14,3 +16,4 @@ export function Slide_StateMachineAsReducer() {
     </>
   );
 }
+renderSlide(Slide_StateMachineAsReducer);

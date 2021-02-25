@@ -13,7 +13,7 @@ import { Slide_IsTheCodeGoodNow } from './slides/part-2-state-machines/2-1.IsThe
 import { Slide_FiniteStateMachines } from './slides/part-2-state-machines/2-2.FiniteStateMachines';
 import { Slide_StateDiagrams } from './slides/part-2-state-machines/2-3.StateDiagrams';
 import { Slide_DefineTheStatesInCode } from './slides/part-2-state-machines/2-4.DefineTheStatesInCode';
-import { Slide_StateMachineAsReducer } from './slides/part-2-state-machines/2-5.ReducerAsStateMachine';
+import { Slide_StateMachineAsReducer } from './slides/part-2-state-machines/2-5.StateMachineAsReducer';
 import { BasePlugin, PluginManager } from './talkUtils/PluginManager';
 import { PluginSelectorDropdown } from './talkUtils/PluginSelectorDropdown';
 import { renderSlide } from './talkUtils/renderSlide';

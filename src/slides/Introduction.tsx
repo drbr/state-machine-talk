@@ -25,6 +25,7 @@ export function Slide_Introduction() {
       <ul>
         <li>Side Effects and async state management</li>
       </ul>
+      <VerticalSpacer />
       <p>
         Yes, the slides have a lot of words. This is an a11y feature. Watch or
         listen; your choice!
