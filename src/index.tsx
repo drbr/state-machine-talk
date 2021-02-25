@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './index.css';
-import { Slide_Introduction } from './slides/0.Introduction';
+import { Slide_Introduction } from './slides/Introduction';
 import { Slide_InlineEditorComponent } from './slides/part-1-reducers/1-1.InlineEditorComponent';
 import { Slide_IsThisCodeGood } from './slides/part-1-reducers/1-2.IsThisCodeGood';
 import { Slide_DefineTheActions } from './slides/part-1-reducers/1-3.DefineTheActions';
@@ -25,9 +25,14 @@ export interface SlidePlugin extends BasePlugin {
 /* eslint-disable react/jsx-pascal-case */
 export const SlidePluginManager = new PluginManager<SlidePlugin>(
   {
-    name: '0. Introduction',
+    name: 'Introduction',
     element: <Slide_Introduction />,
   },
+  {
+    name: '----------------------------',
+    element: <></>,
+  },
+
   {
     name: '1-1. Inline Editor Component',
     element: <Slide_InlineEditorComponent />,
@@ -63,7 +68,7 @@ export const SlidePluginManager = new PluginManager<SlidePlugin>(
   },
 
   {
-    name: '---------------------------',
+    name: '-----------------------------',
     element: <></>,
   },
 
