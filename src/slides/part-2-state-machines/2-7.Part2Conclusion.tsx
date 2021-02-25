@@ -48,6 +48,12 @@ export function Slide_Part2Conclusion() {
           (same technique as in this talk)
         </li>
         <li>
+          <a href="https://www.youtube.com/watch?v=RqTxtOXcv8Y">
+            Simplifying Complex UIs with Finite Automata & Statecharts
+          </a>{' '}
+          (the talk I wish I gave)
+        </li>
+        <li>
           <a href="https://statecharts.github.io/what-is-a-state-machine.html">
             What is a state machine?
           </a>{' '}
@@ -58,12 +64,6 @@ export function Slide_Part2Conclusion() {
             Understanding State Machines
           </a>{' '}
           on FreeCodeCamp
-        </li>
-        <li>
-          <a href="https://www.youtube.com/watch?v=RqTxtOXcv8Y">
-            Simplifying Complex UIs with Finite Automata & Statecharts
-          </a>{' '}
-          (talk by David Khourshid, author of XState)
         </li>
         <li>
           <a href="https://medium.com/@DavidKPiano/the-facetime-bug-and-the-dangers-of-implicit-state-machines-a5f0f61bdaa2">
