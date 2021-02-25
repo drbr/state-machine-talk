@@ -22,6 +22,7 @@ import { PluginSelectorDropdown } from './talkUtils/PluginSelectorDropdown';
 import { renderSlide } from './talkUtils/renderSlide';
 import { Slide_FiniteStateMachines } from './slides/part-2-state-machines/2-2.FiniteStateMachines';
 import { Slide_StateDiagrams } from './slides/part-2-state-machines/2-3.StateDiagrams';
+import { Slide_DefineTheStatesInCode } from './slides/part-2-state-machines/2-4.DefineTheStatesInCode';
 
 export interface SlidePlugin extends BasePlugin {
   element: React.ReactElement;
@@ -86,6 +87,10 @@ export const SlidePluginManager = new PluginManager<SlidePlugin>(
   {
     name: '2-3. State Diagrams',
     element: <Slide_StateDiagrams />,
+  },
+  {
+    name: '2-4. Define the states in code',
+    element: <Slide_DefineTheStatesInCode />,
   }
 
   // {
