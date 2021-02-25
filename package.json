@@ -1,5 +1,6 @@
 {
-  "name": "state-machine-talk",
+  "name": "Reducers and State Machines in Local UI",
+  "description": "Slides for my talk",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
