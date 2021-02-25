@@ -1,7 +1,7 @@
 import React from 'react';
 import { MonoBlock } from '../../talkUtils/FormatAndLayoutComponents';
 
-export function Slide_Part2Conclusion() {
+export function Slide_Part3Conclusion() {
   return (
     <>
       <h1>Part 2 Conclusion</h1>

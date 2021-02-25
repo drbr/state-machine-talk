@@ -64,7 +64,7 @@ const initialInlineEditorState: InlineEditorState = {
   isEditing: false,
 };
 
-function InlineEditorWidget(props: { revealButtons: boolean }) {
+function InlineEditorWidget(props: { showDispatcherButtons: boolean }) {
   const [state, dispatch] = useReducer(
     inlineEditorReducer,
     initialInlineEditorState
@@ -85,7 +85,7 @@ function InlineEditorWidget(props: { revealButtons: boolean }) {
           />
         )}
       </form>
-      {props.revealButtons && <RevealButtons dispatch={dispatch} />}
+      {props.showDispatcherButtons && <DispatcherButtons dispatch={dispatch} />}
     </>
   );
 }
@@ -142,7 +142,7 @@ function InlineEditorEditMode(props: {
   );
 }
 
-function RevealButtons(props: { dispatch: Dispatch<InlineEditorAction> }) {
+function DispatcherButtons(props: { dispatch: Dispatch<InlineEditorAction> }) {
   return (
     <>
       <button
@@ -166,7 +166,7 @@ export function Slide_IsTheCodeGoodNow() {
   return (
     <>
       <h1>Is the code good now?</h1>
-      <InlineEditorWidget revealButtons={answerVisible} />
+      <InlineEditorWidget showDispatcherButtons={answerVisible} />
       <VerticalSpacer />
       <ToggleAnswerButton
         answerVisible={answerVisible}

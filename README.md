@@ -4,9 +4,9 @@ This repo contains the code examples for a talk I gave in February 2021.
 
 ## Codesandbox
 
-These code samples are meant to be viewed in codesandbox.io. Enable "Current Module View" and open individual files from the `examples` directory.
+These code samples are meant to be viewed in codesandbox.io. In Current Module View (enabled by default in the link below), view each slide in the `slides` directory:
 
-https://codesandbox.io/s/github/drbr/state-machine-talk?file=/src/slides/Introduction.tsx
+https://codesandbox.io/s/github/drbr/state-machine-talk?moduleview=1&file=/src/slides/Introduction.tsx
 
 ## Create React App
 

@@ -14,6 +14,8 @@ import { Slide_FiniteStateMachines } from './slides/part-2-state-machines/2-2.Fi
 import { Slide_StateDiagrams } from './slides/part-2-state-machines/2-3.StateDiagrams';
 import { Slide_DefineTheStatesInCode } from './slides/part-2-state-machines/2-4.DefineTheStatesInCode';
 import { Slide_StateMachineAsReducer } from './slides/part-2-state-machines/2-5.StateMachineAsReducer';
+import { Slide_UseStateMachine } from './slides/part-2-state-machines/2-6.UseStateMachine';
+import { Slide_Part2Conclusion } from './slides/part-2-state-machines/2-7.Part2Conclusion';
 import { BasePlugin, PluginManager } from './talkUtils/PluginManager';
 import { PluginSelectorDropdown } from './talkUtils/PluginSelectorDropdown';
 import { renderSlide } from './talkUtils/renderSlide';
@@ -91,29 +93,15 @@ export const SlidePluginManager = new PluginManager<SlidePlugin>(
   {
     name: '2-5. State Machine as Reducer',
     element: <Slide_StateMachineAsReducer />,
+  },
+  {
+    name: '2-6. Use State Machine',
+    element: <Slide_UseStateMachine />,
+  },
+  {
+    name: '2-7. Part 2 Conclusion',
+    element: <Slide_Part2Conclusion />,
   }
-
-  // {
-  //   name: '[Part 3] 30. Side Effects',
-  //   element: <Slide_SideEffects />,
-  // },
-  // {
-  //   name: '[Part 3] 31. Side Effects – Mental Model',
-  //   element: <Slide_SideEffects_MentalModel />,
-  // },
-  // {
-  //   name: '[Part 3] 32. useEffectReducer',
-  //   element: <Slide_UseEffectReducer />,
-  // },
-  // {
-  //   name: '[Part 3] 33. Part 2 Conclusion',
-  //   element: <Slide_Part2Conclusion />,
-  // },
-
-  // {
-  //   name: 'Part 1: 2. Inline Editor with async save',
-  //   element: <Slide_InlineEditorWithAsyncSave />,
-  // }
 );
 
 export function SlideSelector() {
