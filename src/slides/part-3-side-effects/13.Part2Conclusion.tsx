@@ -1,17 +1,11 @@
 import React from 'react';
-import {
-  MonoBlock,
-  VerticalSpacer,
-} from '../talkUtils/FormatAndLayoutComponents';
+import { MonoBlock } from '../../talkUtils/FormatAndLayoutComponents';
 
-const formula = `(previousState, action) =>
-  (nextState, sideEffects)`;
-
-export function Part2Conclusion() {
+export function Slide_Part2Conclusion() {
   return (
     <>
       <h1>Part 2 Conclusion</h1>
-      <p>With Side Effects, we've completed the model of the system.</p>
+      <p>After adding Side Effects, we've completed the model of the system.</p>
       <MonoBlock>{formula}</MonoBlock>
       <p>
         This formula is capable of describing almost any stateful logic in a
@@ -31,10 +25,13 @@ export function Part2Conclusion() {
         </li>
       </ul>
       <p>
-        All the state-update logic can be contained in the reducer (and the
-        effect behaviors), which gets interpreted by a runtime framework to
-        persist state and execute effects.
+        A reducer can contain all the logic that coördinates state, actions and
+        effects; it gets interpreted by a runtime framework to persist state and
+        execute effects.
       </p>
     </>
   );
 }
+
+const formula = `(previousState, action) =>
+  (nextState, sideEffects)`;

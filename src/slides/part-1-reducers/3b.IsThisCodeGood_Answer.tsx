@@ -1,7 +1,9 @@
 import React from 'react';
-import { VerticalSpacer, Mono } from '../talkUtils/FormatAndLayoutComponents';
-
-export function IsThisCodeGood_Answer() {
+import {
+  Mono,
+  VerticalSpacer,
+} from '../../talkUtils/FormatAndLayoutComponents';
+export function Slide_IsThisCodeGood_Answer() {
   return (
     <>
       <h1>Is this code good?</h1>

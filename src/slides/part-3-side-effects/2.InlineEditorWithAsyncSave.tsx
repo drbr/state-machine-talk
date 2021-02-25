@@ -1,34 +1,5 @@
 import { useState } from 'react';
-import { Mono } from '../talkUtils/FormatAndLayoutComponents';
-
-export function InlineEditorWithAsyncSave() {
-  return (
-    <>
-      <Description />
-      <InlineEditorWidget />
-    </>
-  );
-}
-
-function Description() {
-  return (
-    <div>
-      <p>Add async "save" callback to the editor</p>
-      <ul>
-        <li>In a real app, this might call an API</li>
-        <li>
-          Saving takes some time, so the UI should show a "busy" state until the
-          promise resolves
-        </li>
-        <li>
-          Add an async <Mono>doSave</Mono> function and{' '}
-          <Mono>isBusySaving</Mono> state variable, and disable the inputs if
-          busy
-        </li>
-      </ul>
-    </div>
-  );
-}
+import { Mono } from '../../talkUtils/FormatAndLayoutComponents';
 
 function InlineEditorWidget() {
   const [savedValue, setSavedValue] = useState('Edit me!');
@@ -103,5 +74,28 @@ function InlineEditorWidget() {
     <form className="inline-editor-box">
       {isEditing ? editingView : readonlyView}
     </form>
+  );
+}
+
+export function Slide_InlineEditorWithAsyncSave() {
+  return (
+    <>
+      <div>
+        <p>Add async "save" callback to the editor</p>
+        <ul>
+          <li>In a real app, this might call an API</li>
+          <li>
+            Saving takes some time, so the UI should show a "busy" state until
+            the promise resolves
+          </li>
+          <li>
+            Add an async <Mono>doSave</Mono> function and{' '}
+            <Mono>isBusySaving</Mono> state variable, and disable the inputs if
+            busy
+          </li>
+        </ul>
+      </div>
+      <InlineEditorWidget />
+    </>
   );
 }

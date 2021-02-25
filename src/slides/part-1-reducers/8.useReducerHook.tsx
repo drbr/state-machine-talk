@@ -1,45 +1,10 @@
 import React, { Dispatch, useReducer } from 'react';
-import { assertUnreachable } from '../codeUtils/assertUnreachable';
+import { assertUnreachable } from '../../codeUtils/assertUnreachable';
 import {
   Mono,
   MonoBlock,
   VerticalSpacer,
-} from '../talkUtils/FormatAndLayoutComponents';
-
-const reducerExample = `const [state, dispatch] = useReducer(
-  reducer, initialState
-);
-`;
-
-export function UseReducerHook() {
-  return (
-    <>
-      <h1>useReducer Hook</h1>
-      <p>
-        React provides the <Mono>useReducer</Mono> hook, which lets us use a
-        reducer to manage a component's state.
-      </p>
-      <MonoBlock>{reducerExample}</MonoBlock>
-      <ul>
-        <li>
-          <strong>State:</strong> The current state
-        </li>
-        <li>
-          <strong>Dispatch:</strong> A function that accepts actions to initiate
-          a possible state change
-        </li>
-      </ul>
-      <p>
-        In the component's UI callbacks, instead of calling the set state
-        functions, we'll dispatch actions instead. React will send that action
-        through the reducer and update the state.
-      </p>
-      <VerticalSpacer />
-      <p>Here is the non-async version of our widget:</p>
-      <InlineEditorWidget />
-    </>
-  );
-}
+} from '../../talkUtils/FormatAndLayoutComponents';
 
 type InlineEditorState = {
   readonly savedValue: string;
@@ -175,3 +140,39 @@ function InlineEditorEditMode(props: {
     </>
   );
 }
+
+export function Slide_UseReducerHook() {
+  return (
+    <>
+      <h1>useReducer Hook</h1>
+      <p>
+        React provides the <Mono>useReducer</Mono> hook, which lets us use a
+        reducer to manage a component's state. The syntax is similar to{' '}
+        <Mono>useState</Mono>:
+      </p>
+      <MonoBlock>{reducerExampleCode}</MonoBlock>
+      <ul>
+        <li>
+          <strong>State:</strong> The current state
+        </li>
+        <li>
+          <strong>Dispatch:</strong> A function that accepts actions to initiate
+          a possible state change
+        </li>
+      </ul>
+      <p>
+        In the component's UI callbacks, instead of calling the set state
+        functions, we'll dispatch actions instead. React will send that action
+        through the reducer and update the state.
+      </p>
+      <VerticalSpacer />
+      <p>Here is the non-async version of our widget:</p>
+      <InlineEditorWidget />
+    </>
+  );
+}
+
+const reducerExampleCode = `const [state, dispatch] = useReducer(
+  reducer, initialState
+);
+`;

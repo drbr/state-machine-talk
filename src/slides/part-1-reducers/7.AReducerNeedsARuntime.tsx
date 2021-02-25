@@ -1,8 +1,8 @@
 import React from 'react';
-import { ReactComponent as ReducerRuntimeDiagram } from '../images/ReducerRuntimeDiagram.svg';
-import { Centered } from '../talkUtils/FormatAndLayoutComponents';
+import { ReactComponent as ReducerRuntimeDiagram } from '../../images/ReducerRuntimeDiagram.svg';
+import { Centered } from '../../talkUtils/FormatAndLayoutComponents';
 
-export function AReducerNeedsARuntime() {
+export function Slide_AReducerNeedsARuntime() {
   return (
     <>
       <h1>A reducer needs a runtime</h1>

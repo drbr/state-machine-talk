@@ -9,7 +9,7 @@ import {
 import { testExpect } from '../codeUtils/testAssert';
 import { testSpy } from '../codeUtils/testSpy';
 
-export function Testing() {
+export function Slide_Testing() {
   return (
     <>
       <h1>How do we test this?</h1>

@@ -3,9 +3,9 @@ import {
   EmojiListItem,
   VerticalSpacer,
   Mono,
-} from '../talkUtils/FormatAndLayoutComponents';
+} from '../../talkUtils/FormatAndLayoutComponents';
 
-export function TheReducerPattern() {
+export function Slide_TheReducerPattern() {
   return (
     <>
       <h1>The Reducer Pattern</h1>

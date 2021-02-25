@@ -1,22 +1,5 @@
-import React from 'react';
-import { assertUnreachable } from '../codeUtils/assertUnreachable';
-
-export function ReducerInCode_SwitchStatement() {
-  return (
-    <>
-      <h1>How do we code a reducer?</h1>
-      <h2>Then, write the function.</h2>
-      <p>
-        Implement a reducer however you want, but a common way is to use a
-        switch statement.
-      </p>
-      <p>
-        Let's look at the code. Note how the action names give context and
-        meaning to the state changes.
-      </p>
-    </>
-  );
-}
+import { assertUnreachable } from '../../codeUtils/assertUnreachable';
+import { VerticalSpacer } from '../../talkUtils/FormatAndLayoutComponents';
 
 // These are the same state variables as in the original component
 type InlineEditorState = {
@@ -71,4 +54,30 @@ function inlineEditorReducer(
       assertUnreachable(action);
       return prevState;
   }
+}
+
+export function Slide_ReducerInCode_SwitchStatement() {
+  return (
+    <>
+      <h1>How do we code a reducer?</h1>
+      <p>
+        Implement a reducer however you want, but a common way is to use a
+        switch statement.
+      </p>
+      <p>
+        Let's look at the code. Note how the action names give context and
+        meaning to the state changes.
+      </p>
+      <VerticalSpacer />
+      <p>Using a reducer has a few benefits:</p>
+      <ol>
+        <li>Defines all the state updates in one place</li>
+        <li>Decouples state code from display code.</li>
+        <li>
+          Increases clarity about what happens in response to each user action
+          (because actions have names)
+        </li>
+      </ol>
+    </>
+  );
 }

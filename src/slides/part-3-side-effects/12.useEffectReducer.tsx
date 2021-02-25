@@ -1,48 +1,11 @@
 import { Dispatch } from 'react';
 import { EffectReducer, useEffectReducer } from 'use-effect-reducer';
-import { assertUnreachable } from '../codeUtils/assertUnreachable';
+import { assertUnreachable } from '../../codeUtils/assertUnreachable';
 import {
   Mono,
   MonoBlock,
   VerticalSpacer,
-} from '../talkUtils/FormatAndLayoutComponents';
-
-const effectReducerExample = `const [state, dispatch] =
-  useEffectReducer(
-    reducer, initialState, effectMap
-  );
-`;
-
-export function UseEffectReducerSlide() {
-  return (
-    <>
-      <h1>useEffectReducer</h1>
-      <p>
-        With the reducer now returning side effects, the runtime framework needs
-        to execute those effects.
-      </p>
-      <p>
-        We could build a framework to take effect descriptors from the reducer
-        and execute them with <Mono>useEffect</Mono>, but managing long-running
-        effects correctly is tricky, so (in React) we can use the 3rd-party{' '}
-        <a href="https://github.com/davidkpiano/useEffectReducer">
-          <Mono>useEffectReducer</Mono>
-        </a>{' '}
-        hook instead.
-      </p>
-      <MonoBlock>{effectReducerExample}</MonoBlock>
-      <ul>
-        <li>
-          <strong>EffectMap:</strong> A mapping of effect descriptors to
-          functions that perform the effects
-        </li>
-      </ul>
-      <VerticalSpacer />
-      <p>The widget with async save, implemented with an effect reducer:</p>
-      <InlineEditorWidget />
-    </>
-  );
-}
+} from '../../talkUtils/FormatAndLayoutComponents';
 
 type InlineEditorState = {
   readonly savedValue: string;
@@ -237,3 +200,41 @@ function InlineEditorEditMode(props: {
     </>
   );
 }
+
+export function Slide_UseEffectReducer() {
+  return (
+    <>
+      <h1>useEffectReducer</h1>
+      <p>
+        With a reducer that returns side effects, the runtime framework needs to
+        execute those effects. React does not have this built-in.
+      </p>
+      <p>
+        We could build a framework to take effect descriptors from the reducer
+        and execute them with <Mono>useEffect</Mono>, but managing long-running
+        effects correctly is tricky, so (in React) we can use the 3rd-party{' '}
+        <a href="https://github.com/davidkpiano/useEffectReducer">
+          <Mono>useEffectReducer</Mono>
+        </a>{' '}
+        hook instead.
+      </p>
+      <MonoBlock>{effectReducerExampleCode}</MonoBlock>
+      <ul>
+        <li>
+          <strong>EffectMap:</strong> A mapping of effect descriptors to
+          functions that perform the effects. Splitting the descriptor from the
+          implementation keeps the reducer pure (and easily-testable).
+        </li>
+      </ul>
+      <VerticalSpacer />
+      <p>The widget with async save, implemented with an effect reducer:</p>
+      <InlineEditorWidget />
+    </>
+  );
+}
+
+const effectReducerExampleCode = `const [state, dispatch] =
+  useEffectReducer(
+    reducer, initialState, effectMap
+  );
+`;

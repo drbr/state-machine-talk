@@ -1,28 +1,5 @@
 import { useState } from 'react';
 
-export function InlineEditorFirstAttempt() {
-  return (
-    <>
-      <Description />
-      <InlineEditorWidget />
-    </>
-  );
-}
-
-function Description() {
-  return (
-    <div>
-      <h1>Inline editor component</h1>
-      <ul>
-        <li>Readonly and Edit Modes</li>
-        <li>Click "Edit" to switch into edit mode</li>
-        <li>"Save" exits edit mode and persists the value</li>
-        <li>"Cancel" exits edit mode and discards the value</li>
-      </ul>
-    </div>
-  );
-}
-
 function InlineEditorWidget() {
   // Keep track of the state in readonly and edit modes
   const [savedValue, setSavedValue] = useState('Edit me!');
@@ -81,5 +58,22 @@ function InlineEditorWidget() {
     <form className="inline-editor-box">
       {isEditing ? editingView : readonlyView}
     </form>
+  );
+}
+
+export function Slide_InlineEditorFirstAttempt() {
+  return (
+    <>
+      <div>
+        <h1>Inline editor component</h1>
+        <ul>
+          <li>Readonly and Edit Modes</li>
+          <li>Click "Edit" to switch into edit mode</li>
+          <li>"Save" exits edit mode and persists the value</li>
+          <li>"Cancel" exits edit mode and discards the value</li>
+        </ul>
+      </div>
+      <InlineEditorWidget />
+    </>
   );
 }

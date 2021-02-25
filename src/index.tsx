@@ -1,31 +1,31 @@
 import React, { useState } from 'react';
 import './index.css';
 import { Introduction } from './slides/0.Introduction';
-import { InlineEditorFirstAttempt } from './slides/1.InlineEditorFirstAttempt';
-import { SideEffects } from './slides/10.SideEffects';
-import { SideEffects_MentalModel } from './slides/11.SideEffects_MentalModel';
-import { UseEffectReducerSlide } from './slides/12.useEffectReducer';
-import { Testing } from './slides/20.Testing';
-import { Part2Conclusion } from './slides/13.Part2Conclusion';
-import { InlineEditorWithAsyncSave } from './slides/2.InlineEditorWithAsyncSave';
-import { IsThisCodeGood_Question } from './slides/3a.IsThisCodeGood_Question';
-import { TheReducerPattern } from './slides/4.TheReducerPattern';
-import { ReducerInCode_Actions } from './slides/5.ReducerInCode_Actions';
-import { ReducerInCode_SwitchStatement } from './slides/6.ReducerInCode_SwitchStatement';
-import { AReducerNeedsARuntime } from './slides/7.AReducerNeedsARuntime';
-import { UseReducerHook } from './slides/8.useReducerHook';
-import { Part1Conclusion } from './slides/9.Part1Conclusion';
+import { Slide_InlineEditorFirstAttempt } from './slides/part-1-reducers/1.InlineEditorFirstAttempt';
+import { Slide_SideEffects } from './slides/part-3-side-effects/10.SideEffects';
+import { Slide_IsTheCodeGoodNow } from './slides/14a.IsTheCodeGoodNow';
+import { Slide_IsTheCodeGoodNow_ProblemsWithState } from './slides/14b.IsTheCodeGoodNow_ProblemsWithState';
+import { Slide_IsThisCodeGood_Question } from './slides/part-1-reducers/3a.IsThisCodeGood_Question';
+import { Slide_IsThisCodeGood_Answer } from './slides/part-1-reducers/3b.IsThisCodeGood_Answer';
+import { Slide_DefineTheActions } from './slides/part-1-reducers/4.DefineTheActions';
+import { Slide_TheReducerPattern } from './slides/part-1-reducers/5.TheReducerPattern';
+import { Slide_ReducerInCode_SwitchStatement } from './slides/part-1-reducers/6.ReducerInCode_SwitchStatement';
+import { Slide_AReducerNeedsARuntime } from './slides/part-1-reducers/7.AReducerNeedsARuntime';
+import { Slide_UseReducerHook } from './slides/part-1-reducers/8.useReducerHook';
+import { Slide_Part1Conclusion } from './slides/part-1-reducers/9.Part1Conclusion';
+import { Slide_SideEffects_MentalModel } from './slides/part-3-side-effects/11.SideEffects_MentalModel';
+import { Slide_UseEffectReducer } from './slides/part-3-side-effects/12.useEffectReducer';
+import { Slide_Part2Conclusion } from './slides/part-3-side-effects/13.Part2Conclusion';
+import { Slide_InlineEditorWithAsyncSave } from './slides/part-3-side-effects/2.InlineEditorWithAsyncSave';
 import { BasePlugin, PluginManager } from './talkUtils/PluginManager';
 import { PluginSelectorDropdown } from './talkUtils/PluginSelectorDropdown';
 import { renderSlide } from './talkUtils/renderSlide';
-import { IsThisCodeGood_Answer } from './slides/3b.IsThisCodeGood_Answer';
-import { IsTheCodeGoodNow } from './slides/14a.IsTheCodeGoodNow';
-import { IsTheCodeGoodNow_ProblemsWithState } from './slides/14b.IsTheCodeGoodNow_ProblemsWithState';
 
 export interface SlidePlugin extends BasePlugin {
   element: React.ReactElement;
 }
 
+/* eslint-disable react/jsx-pascal-case */
 export const SlidePluginManager = new PluginManager<SlidePlugin>(
   {
     name: '0. Introduction',
@@ -33,67 +33,68 @@ export const SlidePluginManager = new PluginManager<SlidePlugin>(
   },
   {
     name: '1. Inline Editor – First Attempt',
-    element: <InlineEditorFirstAttempt />,
+    element: <Slide_InlineEditorFirstAttempt />,
   },
   {
     name: '2. Inline Editor with async save',
-    element: <InlineEditorWithAsyncSave />,
+    element: <Slide_InlineEditorWithAsyncSave />,
   },
   {
     name: '3a. Is this code good?',
-    element: <IsThisCodeGood_Question />,
+    element: <Slide_IsThisCodeGood_Question />,
   },
   {
     name: '3. Is this code good? Answer',
-    element: <IsThisCodeGood_Answer />,
+    element: <Slide_IsThisCodeGood_Answer />,
+  },
+
+  {
+    name: '4. Define the Actions',
+    element: <Slide_DefineTheActions />,
   },
   {
-    name: '4. The Reducer Pattern',
-    element: <TheReducerPattern />,
-  },
-  {
-    name: '5. Reducer in code - Actions',
-    element: <ReducerInCode_Actions />,
+    name: '5. The Reducer Pattern',
+    element: <Slide_TheReducerPattern />,
   },
   {
     name: '6. Reducer in code – Switch Statement',
-    element: <ReducerInCode_SwitchStatement />,
+    element: <Slide_ReducerInCode_SwitchStatement />,
   },
   {
     name: '7. A reducer needs a runtime',
-    element: <AReducerNeedsARuntime />,
+    element: <Slide_AReducerNeedsARuntime />,
   },
   {
     name: '8. useReducer Hook',
-    element: <UseReducerHook />,
+    element: <Slide_UseReducerHook />,
   },
   {
     name: '9. Part 1 Conclusion',
-    element: <Part1Conclusion />,
+    element: <Slide_Part1Conclusion />,
   },
   {
     name: '10. Side Effects',
-    element: <SideEffects />,
+    element: <Slide_SideEffects />,
   },
   {
     name: '11. Side Effects – Mental Model',
-    element: <SideEffects_MentalModel />,
+    element: <Slide_SideEffects_MentalModel />,
   },
   {
     name: '12. useEffectReducer',
-    element: <UseEffectReducerSlide />,
+    element: <Slide_UseEffectReducer />,
   },
   {
     name: '13. Part 2 Conclusion',
-    element: <Part2Conclusion />,
+    element: <Slide_Part2Conclusion />,
   },
   {
     name: '14a. Is the code good now?',
-    element: <IsTheCodeGoodNow />,
+    element: <Slide_IsTheCodeGoodNow />,
   },
   {
     name: '14b. Is the code good now? Problems with state',
-    element: <IsTheCodeGoodNow_ProblemsWithState />,
+    element: <Slide_IsTheCodeGoodNow_ProblemsWithState />,
   }
 );
 

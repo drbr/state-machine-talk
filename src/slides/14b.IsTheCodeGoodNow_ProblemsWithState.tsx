@@ -1,22 +1,24 @@
 import React from 'react';
-import { VerticalSpacer } from '../talkUtils/FormatAndLayoutComponents';
+import { Mono, VerticalSpacer } from '../talkUtils/FormatAndLayoutComponents';
 
-export function IsTheCodeGoodNow_ProblemsWithState() {
+export function Slide_IsTheCodeGoodNow_ProblemsWithState() {
   return (
     <>
       <h1>Is the code good now?</h1>
-      <p>Actions and side effects are in good shape, but…</p>
-      <h2>There are some problems with state.</h2>
+      <p>
+        Actions and side effects are in good shape, but we still have a problem
+        with state.
+      </p>
       <ul>
-        <li>Not all the pieces are valid all the time</li>
         <li>
-          Any action can take effect at any time, but that doesn't actually make
-          sense
+          What happens if we're viewing the readonly display and we get a{' '}
+          <Mono>START_SAVE</Mono> action?
         </li>
       </ul>
       <VerticalSpacer />
       <p>
-        I've been talking about <em>modes</em>…
+        We've been talking about <em>readonly mode</em> and <em>edit mode</em>…
+        can we structure the code to reflect these concepts?
       </p>
     </>
   );
