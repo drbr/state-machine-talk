@@ -1,5 +1,6 @@
 import StateDiagram from '../../images/inlineEditorStateDiagram.png';
 import { Centered } from '../../talkUtils/FormatAndLayoutComponents';
+import { renderSlide } from '../../talkUtils/renderSlide';
 
 export function Slide_StateDiagrams() {
   return (
@@ -13,7 +14,7 @@ export function Slide_StateDiagrams() {
         <li>A box for each of the possible states</li>
         <li>A line representing each transition, and which action causes it</li>
         <li>
-          The FSM must have an <em>initial state</em>. Some FSMs also have a{' '}
+          The FSM must have an <em>initial state</em>. FSMs may also have a{' '}
           <em>final state</em>.
         </li>
       </ol>
@@ -27,3 +28,4 @@ export function Slide_StateDiagrams() {
     </>
   );
 }
+renderSlide(Slide_StateDiagrams);

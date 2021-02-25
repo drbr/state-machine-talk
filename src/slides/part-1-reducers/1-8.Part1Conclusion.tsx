@@ -1,5 +1,6 @@
 import React from 'react';
 import { Mono } from '../../talkUtils/FormatAndLayoutComponents';
+import { renderSlide } from '../../talkUtils/renderSlide';
 
 export function Slide_Part1Conclusion() {
   return (
@@ -31,3 +32,4 @@ export function Slide_Part1Conclusion() {
     </>
   );
 }
+renderSlide(Slide_Part1Conclusion);

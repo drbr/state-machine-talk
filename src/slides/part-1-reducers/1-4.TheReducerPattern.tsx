@@ -4,6 +4,7 @@ import {
   VerticalSpacer,
   Mono,
 } from '../../talkUtils/FormatAndLayoutComponents';
+import { renderSlide } from '../../talkUtils/renderSlide';
 
 export function Slide_TheReducerPattern() {
   return (
@@ -49,3 +50,4 @@ export function Slide_TheReducerPattern() {
     </>
   );
 }
+renderSlide(Slide_TheReducerPattern);

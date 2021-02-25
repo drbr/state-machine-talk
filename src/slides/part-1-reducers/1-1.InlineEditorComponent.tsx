@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { renderSlide } from '../../talkUtils/renderSlide';
 
 function InlineEditorWidget() {
   // Keep track of the state in readonly and edit modes
@@ -77,3 +78,4 @@ export function Slide_InlineEditorComponent() {
     </>
   );
 }
+renderSlide(Slide_InlineEditorComponent);

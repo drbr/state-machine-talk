@@ -1,6 +1,7 @@
 import React from 'react';
 import { ReactComponent as ReducerRuntimeDiagram } from '../../images/ReducerRuntimeDiagram.svg';
 import { Centered } from '../../talkUtils/FormatAndLayoutComponents';
+import { renderSlide } from '../../talkUtils/renderSlide';
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 export function Slide_AReducerNeedsARuntime() {
@@ -22,6 +23,7 @@ export function Slide_AReducerNeedsARuntime() {
     </>
   );
 }
+renderSlide(Slide_AReducerNeedsARuntime);
 
 /** Diagram was generated from this code using sequencediagram.org */
 const rawSequenceDiagram = `

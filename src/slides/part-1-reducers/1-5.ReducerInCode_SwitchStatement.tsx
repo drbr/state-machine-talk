@@ -1,5 +1,6 @@
 import { assertUnreachable } from '../../codeUtils/assertUnreachable';
 import { VerticalSpacer } from '../../talkUtils/FormatAndLayoutComponents';
+import { renderSlide } from '../../talkUtils/renderSlide';
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 // These are the same state variables as in the original component
@@ -82,3 +83,4 @@ export function Slide_ReducerInCode_SwitchStatement() {
     </>
   );
 }
+renderSlide(Slide_ReducerInCode_SwitchStatement);

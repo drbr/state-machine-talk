@@ -2,6 +2,7 @@ import React from 'react';
 import ReadonlyModeImg from '../../images/inlineEditorReadonlyMode.png';
 import EditModeImg from '../../images/inlineEditorEditMode.png';
 import { Mono } from '../../talkUtils/FormatAndLayoutComponents';
+import { renderSlide } from '../../talkUtils/renderSlide';
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 /**
@@ -41,20 +42,19 @@ export function Slide_DefineTheActions() {
         <li>Save</li>
       </ol>
       <h2>Declare the actions in code</h2>
-      <p>
-        <ul>
-          <li>Represent actions as plain JS objects</li>
-          <li>
-            Each action has a name, which, by convention, goes in the{' '}
-            <Mono>type</Mono> property
-          </li>
-          <li>
-            {' '}
-            The action object <em>has no behavior</em>, it only describes what
-            happened.
-          </li>
-        </ul>
-      </p>
+      <ul>
+        <li>Represent actions as plain JS objects</li>
+        <li>
+          Each action has a name, which, by convention, goes in the{' '}
+          <Mono>type</Mono> property
+        </li>
+        <li>
+          {' '}
+          The action object <em>has no behavior</em>, it only describes what
+          happened.
+        </li>
+      </ul>
     </>
   );
 }
+renderSlide(Slide_DefineTheActions);

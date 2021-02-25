@@ -1,9 +1,11 @@
-import { Dispatch, useReducer } from 'react';
+import React, { Dispatch, useReducer } from 'react';
 import { assertUnreachable } from '../../codeUtils/assertUnreachable';
 import {
   Mono,
+  MonoBlock,
   VerticalSpacer,
 } from '../../talkUtils/FormatAndLayoutComponents';
+import { renderSlide } from '../../talkUtils/renderSlide';
 
 type InlineEditorState = {
   readonly savedValue: string;
@@ -71,33 +73,19 @@ function InlineEditorWidget() {
   // it's easier to pull out the display components without needing to pass down
   // several props for all the different state fields that need to be updated.
   return (
-    <>
-      <form className="inline-editor-box">
-        {state.isEditing ? (
-          <InlineEditorEditMode
-            editorValue={state.editorValue}
-            dispatch={dispatch}
-          />
-        ) : (
-          <InlineEditorReadonlyMode
-            savedValue={state.savedValue}
-            dispatch={dispatch}
-          />
-        )}
-      </form>
-      <button
-        style={{ display: 'block', marginTop: 10 }}
-        onClick={() => dispatch({ type: 'START_EDITING' })}
-      >
-        START_EDITING
-      </button>
-      <button
-        style={{ display: 'block', marginTop: 10 }}
-        onClick={() => dispatch({ type: 'SAVE' })}
-      >
-        SAVE
-      </button>
-    </>
+    <form className="inline-editor-box">
+      {state.isEditing ? (
+        <InlineEditorEditMode
+          editorValue={state.editorValue}
+          dispatch={dispatch}
+        />
+      ) : (
+        <InlineEditorReadonlyMode
+          savedValue={state.savedValue}
+          dispatch={dispatch}
+        />
+      )}
+    </form>
   );
 }
 
@@ -154,37 +142,42 @@ function InlineEditorEditMode(props: {
   );
 }
 
-export function Slide_IsTheCodeGoodNow_ProblemsWithState() {
+export function Slide_UseReducerHook() {
   return (
     <>
-      <h1>Is the code good now?</h1>
-      <InlineEditorWidget />
-      <VerticalSpacer />
+      <h1>useReducer Hook</h1>
+      <p>
+        React provides the <Mono>useReducer</Mono> hook, which lets us use a
+        reducer to manage a component's state. The syntax is similar to{' '}
+        <Mono>useState</Mono>:
+      </p>
+      <MonoBlock>{reducerExampleCode}</MonoBlock>
       <ul>
         <li>
-          What happens if we're currently editing the value and the{' '}
-          <Mono>START_EDITING</Mono> action gets dispatched again?
-          {/*
-            1. Start edit mode
-            2. Type "I will never be overwritten!!"
-            3. Dispatch START_EDITING
-          */}
+          <strong>State:</strong> The current state
         </li>
         <li>
-          Or if we're in readonly mode and <Mono>SAVE</Mono> gets dispatched?
-          {/*
-            1. Start edit mode
-            2. Type "What happens in edit mode stays in edit mode"
-            3. Cancel
-            4. Dispatch SAVE
-          */}
+          <strong>Dispatch:</strong> A function that accepts actions to initiate
+          a possible state change
         </li>
       </ul>
+      <p>
+        In the component's UI callbacks, instead of calling the set state
+        functions, we'll dispatch actions instead. React will send that action
+        through the reducer and update the state.
+      </p>
       <VerticalSpacer />
       <p>
-        If the component receives certain actions at unexpected times, we get
-        unexpected behavior. How can we make this safer?
+        Here is the widget implemented with <Mono>useReducer</Mono>:
       </p>
+      <InlineEditorWidget />
     </>
   );
 }
+
+const reducerExampleCode = `const [state, dispatch] = useReducer(
+  reducer, initialState
+);
+`;
+
+renderSlide(Slide_UseReducerHook);

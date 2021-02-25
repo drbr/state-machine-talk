@@ -1,8 +1,6 @@
 import React from 'react';
-import {
-  Strike,
-  VerticalSpacer,
-} from '../../talkUtils/FormatAndLayoutComponents';
+import { VerticalSpacer } from '../../talkUtils/FormatAndLayoutComponents';
+import { renderSlide } from '../../talkUtils/renderSlide';
 
 export function Slide_FiniteStateMachines() {
   return (
@@ -34,3 +32,4 @@ export function Slide_FiniteStateMachines() {
     </>
   );
 }
+renderSlide(Slide_FiniteStateMachines);

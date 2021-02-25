@@ -27,12 +27,12 @@ function getRenderedModuleName() {
   return undefined;
 }
 
-export function renderSlide(node: React.ReactNode) {
+export function renderSlide(component: React.ComponentType) {
   const moduleName = getRenderedModuleName();
   ReactDOM.render(
     <div className="slide-styles-container">
       <div className="module-name">{moduleName || null}</div>
-      {node}
+      {React.createElement(component)}
     </div>,
     getRoot()
   );

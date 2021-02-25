@@ -1,5 +1,14 @@
-import { useReducer, Dispatch } from 'react';
+import { Dispatch, useReducer } from 'react';
 import { assertUnreachable } from '../../codeUtils/assertUnreachable';
+import {
+  Mono,
+  VerticalSpacer,
+} from '../../talkUtils/FormatAndLayoutComponents';
+import { renderSlide } from '../../talkUtils/renderSlide';
+import {
+  ToggleAnswerButton,
+  useAnswerVisibility,
+} from '../../talkUtils/useAnswerVisibility';
 
 type InlineEditorState = {
   readonly savedValue: string;
@@ -16,7 +25,6 @@ type InlineEditorAction =
       value: string;
     };
 
-/** Reducer for the state transitions in the simple Inline Editor */
 function inlineEditorReducer(
   prevState: InlineEditorState,
   action: InlineEditorAction
@@ -56,30 +64,29 @@ const initialInlineEditorState: InlineEditorState = {
   isEditing: false,
 };
 
-function InlineEditorWidget() {
-  // Instead of having three separate useState instances, we have a single reducer
+function InlineEditorWidget(props: { revealButtons: boolean }) {
   const [state, dispatch] = useReducer(
     inlineEditorReducer,
     initialInlineEditorState
   );
 
-  // Now, because we just have one dispatch (instead of several state setters),
-  // it's easier to pull out the display components without needing to pass down
-  // several props for all the different state fields that need to be updated.
   return (
-    <form className="inline-editor-box">
-      {state.isEditing ? (
-        <InlineEditorEditMode
-          editorValue={state.editorValue}
-          dispatch={dispatch}
-        />
-      ) : (
-        <InlineEditorReadonlyMode
-          savedValue={state.savedValue}
-          dispatch={dispatch}
-        />
-      )}
-    </form>
+    <>
+      <form className="inline-editor-box">
+        {state.isEditing ? (
+          <InlineEditorEditMode
+            editorValue={state.editorValue}
+            dispatch={dispatch}
+          />
+        ) : (
+          <InlineEditorReadonlyMode
+            savedValue={state.savedValue}
+            dispatch={dispatch}
+          />
+        )}
+      </form>
+      {props.revealButtons && <RevealButtons dispatch={dispatch} />}
+    </>
   );
 }
 
@@ -91,7 +98,6 @@ function InlineEditorReadonlyMode(props: {
     <>
       <span>{props.savedValue}</span>
       <div>
-        {/* Instead of manually updating the state, we dispatch events */}
         <button onClick={() => props.dispatch({ type: 'START_EDITING' })}>
           Edit
         </button>
@@ -136,11 +142,67 @@ function InlineEditorEditMode(props: {
   );
 }
 
-export function Slide_IsTheCodeGoodNow() {
+function RevealButtons(props: { dispatch: Dispatch<InlineEditorAction> }) {
   return (
     <>
-      <h1>Is the code good now?</h1>
-      <InlineEditorWidget />
+      <button
+        style={{ marginTop: 10, marginRight: 10 }}
+        onClick={() => props.dispatch({ type: 'START_EDITING' })}
+      >
+        START_EDITING
+      </button>
+      <button
+        style={{ marginTop: 10, marginRight: 10 }}
+        onClick={() => props.dispatch({ type: 'SAVE' })}
+      >
+        SAVE
+      </button>
     </>
   );
 }
+
+export function Slide_IsTheCodeGoodNow() {
+  const [answerVisible, toggleAnswer] = useAnswerVisibility();
+  return (
+    <>
+      <h1>Is the code good now?</h1>
+      <InlineEditorWidget revealButtons={answerVisible} />
+      <VerticalSpacer />
+      <ToggleAnswerButton
+        answerVisible={answerVisible}
+        toggleAnswer={toggleAnswer}
+      />
+      {answerVisible && (
+        <>
+          <ul>
+            <li>
+              What happens if we're currently editing the value and the{' '}
+              <Mono>START_EDITING</Mono> action gets dispatched again?
+              {/*
+            1. Start edit mode
+            2. Type "I will never be overwritten!!"
+            3. Dispatch START_EDITING
+          */}
+            </li>
+            <li>
+              Or if we're in readonly mode and <Mono>SAVE</Mono> gets
+              dispatched?
+              {/*
+            1. Start edit mode
+            2. Type "What happens in edit mode stays in edit mode"
+            3. Cancel
+            4. Dispatch SAVE
+          */}
+            </li>
+          </ul>
+          <VerticalSpacer />
+          <p>
+            If the component receives certain actions at unexpected times, we
+            get unexpected behavior. How can we make this safer?
+          </p>
+        </>
+      )}
+    </>
+  );
+}
+renderSlide(Slide_IsTheCodeGoodNow);

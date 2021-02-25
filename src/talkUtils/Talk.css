@@ -1,7 +1,5 @@
 .slide-styles-container {
   padding: 25px;
-  display: flex;
-  flex-direction: column;
   max-width: 100%;
   font-size: 20px;
   line-height: 1.2;
