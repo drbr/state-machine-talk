@@ -81,6 +81,9 @@ export function Slide_IsThisCodeGood() {
   return (
     <>
       <h1>Is this code good?</h1>
+      <h2>
+        What do we like about this? What don't we like?
+      </h2>
       <InlineEditorWidget />
       <VerticalSpacer />
       <ToggleAnswerButton
