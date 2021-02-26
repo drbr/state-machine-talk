@@ -7,7 +7,8 @@ import { renderSlide } from '../../talkUtils/renderSlide';
 
 /**
  * With TypeScript, we can list the names as a string union.
- * If any of the actions have extra data, use a discriminated union
+ * If any of the actions have extra data, use a
+ * discriminated union
  */
 type InlineEditorAction =
   | {
@@ -20,7 +21,8 @@ type InlineEditorAction =
 
 const MyAction: InlineEditorAction = {
   type: 'EDIT_VALUE',
-  value: 'This is the text that I typed into the input field',
+  value:
+    'This is the text that I typed into the input field',
 };
 
 export function Slide_DefineTheActions() {
@@ -28,12 +30,19 @@ export function Slide_DefineTheActions() {
     <>
       <h1>Define the Actions</h1>
       <p>
-        What are the possible things that can happen to the Inline Editor from
-        the outside (in this case, what can the user do)?
+        What are the possible things that can happen to the
+        Inline Editor from the outside (in this case, what
+        can the user do)?
       </p>
       <div className="right-image-container">
-        <img src={ReadonlyModeImg} alt="Inline Editor in readonly mode" />
-        <img src={EditModeImg} alt="Inline Editor in edit mode" />
+        <img
+          src={ReadonlyModeImg}
+          alt="Inline Editor in readonly mode"
+        />
+        <img
+          src={EditModeImg}
+          alt="Inline Editor in edit mode"
+        />
       </div>
       <ol>
         <li>Start editing</li>
@@ -45,13 +54,13 @@ export function Slide_DefineTheActions() {
       <ul>
         <li>Represent actions as plain JS objects</li>
         <li>
-          Each action has a name, which, by convention, goes in the{' '}
-          <Mono>type</Mono> property
+          Each action has a name, which, by convention, goes
+          in the <Mono>type</Mono> property
         </li>
         <li>
           {' '}
-          The action object <em>has no behavior</em>, it only describes what
-          happened.
+          The action object <em>has no behavior</em>, it
+          only describes what happened.
         </li>
       </ul>
     </>

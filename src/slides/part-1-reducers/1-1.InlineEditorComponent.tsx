@@ -4,7 +4,9 @@ import { renderSlide } from '../../talkUtils/renderSlide';
 function InlineEditorWidget() {
   // Keep track of the state in readonly and edit modes
   const [savedValue, setSavedValue] = useState('Edit me!');
-  const [editorValue, setEditorValue] = useState(savedValue);
+  const [editorValue, setEditorValue] = useState(
+    savedValue
+  );
   const [isEditing, setIsEditing] = useState(false);
 
   const readonlyView = (
@@ -27,14 +29,14 @@ function InlineEditorWidget() {
     <>
       <input
         value={editorValue}
-        onChange={(event) => {
+        onChange={event => {
           setEditorValue(event.target.value);
         }}
       />
       <div>
         <button
           type="reset"
-          onClick={(event) => {
+          onClick={event => {
             event.preventDefault();
             setIsEditing(false);
           }}
@@ -43,7 +45,7 @@ function InlineEditorWidget() {
         </button>
         <button
           type="submit"
-          onClick={(event) => {
+          onClick={event => {
             event.preventDefault();
             setSavedValue(editorValue);
             setIsEditing(false);
@@ -70,8 +72,12 @@ export function Slide_InlineEditorComponent() {
         <ul>
           <li>Readonly and Edit Modes</li>
           <li>Click "Edit" to switch into edit mode</li>
-          <li>"Save" exits edit mode and persists the value</li>
-          <li>"Cancel" exits edit mode and discards the value</li>
+          <li>
+            "Save" exits edit mode and persists the value
+          </li>
+          <li>
+            "Cancel" exits edit mode and discards the value
+          </li>
         </ul>
       </div>
       <InlineEditorWidget />

@@ -9,23 +9,27 @@ export function Slide_AReducerNeedsARuntime() {
     <>
       <h1>A reducer needs a runtime</h1>
       <p>
-        By itself, a reducer does nothing. To use it, we need to pair it with a
-        runtime framework, which will use the information from the reducer to
-        manage actual app/component state.
+        By itself, a reducer does nothing. To use it, we
+        need to pair it with a runtime framework, which will
+        use the information from the reducer to manage
+        actual app/component state.
       </p>
       <Centered>
         <ReducerRuntimeDiagram title="Reducer runtime sequence diagram" />
       </Centered>
       <p>
-        Once we have this adapter for our chosen UI framework, we can use it
-        with any reducer!
+        Once we have this adapter for our chosen UI
+        framework, we can use it with any reducer!
       </p>
     </>
   );
 }
 renderSlide(Slide_AReducerNeedsARuntime);
 
-/** Diagram was generated from this code using sequencediagram.org */
+/**
+ * Diagram was generated from this code using
+ * sequencediagram.org
+ */
 const rawSequenceDiagram = `
 participant UI
 participant "Framework\n(stores state)" as Framework

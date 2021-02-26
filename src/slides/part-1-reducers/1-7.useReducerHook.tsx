@@ -22,7 +22,10 @@ type InlineEditorAction =
       value: string;
     };
 
-/** Reducer for the state transitions in the simple Inline Editor */
+/**
+ * Reducer for the state transitions in the simple Inline
+ * Editor
+ */
 function inlineEditorReducer(
   prevState: InlineEditorState,
   action: InlineEditorAction
@@ -58,20 +61,24 @@ function inlineEditorReducer(
 
 const initialInlineEditorState: InlineEditorState = {
   savedValue: 'Edit me!',
-  editorValue: 'I get overwritten when edit mode starts so I can be anything',
+  editorValue:
+    'I get overwritten when edit mode starts so I can be anything',
   isEditing: false,
 };
 
 function InlineEditorWidget() {
-  // Instead of having three separate useState instances, we have a single reducer
+  // Instead of having three separate useState instances, we
+  // have a single reducer
   const [state, dispatch] = useReducer(
     inlineEditorReducer,
     initialInlineEditorState
   );
 
-  // Now, because we just have one dispatch (instead of several state setters),
-  // it's easier to pull out the display components without needing to pass down
-  // several props for all the different state fields that need to be updated.
+  // Now, because we just have one dispatch (instead of
+  // several state setters), it's easier to pull out the
+  // display components without needing to pass down several
+  // props for all the different state fields that need to
+  // be updated.
   return (
     <form className="inline-editor-box">
       {state.isEditing ? (
@@ -97,8 +104,13 @@ function InlineEditorReadonlyMode(props: {
     <>
       <span>{props.savedValue}</span>
       <div>
-        {/* Instead of manually updating the state, we dispatch events */}
-        <button onClick={() => props.dispatch({ type: 'START_EDITING' })}>
+        {/* Instead of manually updating the state,
+            we dispatch events */}
+        <button
+          onClick={() =>
+            props.dispatch({ type: 'START_EDITING' })
+          }
+        >
           Edit
         </button>
       </div>
@@ -114,14 +126,17 @@ function InlineEditorEditMode(props: {
     <>
       <input
         value={props.editorValue}
-        onChange={(event) =>
-          props.dispatch({ type: 'EDIT_VALUE', value: event.target.value })
+        onChange={event =>
+          props.dispatch({
+            type: 'EDIT_VALUE',
+            value: event.target.value,
+          })
         }
       />
       <div>
         <button
           type="reset"
-          onClick={(event) => {
+          onClick={event => {
             event.preventDefault();
             props.dispatch({ type: 'CANCEL' });
           }}
@@ -130,7 +145,7 @@ function InlineEditorEditMode(props: {
         </button>
         <button
           type="submit"
-          onClick={(event) => {
+          onClick={event => {
             event.preventDefault();
             props.dispatch({ type: 'SAVE' });
           }}
@@ -147,8 +162,9 @@ export function Slide_UseReducerHook() {
     <>
       <h1>useReducer Hook</h1>
       <p>
-        React provides the <Mono>useReducer</Mono> hook, which lets us use a
-        reducer to manage a component's state. The syntax is similar to{' '}
+        React provides the <Mono>useReducer</Mono> hook,
+        which lets us use a reducer to manage a component's
+        state. The syntax is similar to{' '}
         <Mono>useState</Mono>:
       </p>
       <MonoBlock>{reducerExampleCode}</MonoBlock>
@@ -157,18 +173,20 @@ export function Slide_UseReducerHook() {
           <strong>State:</strong> The current state
         </li>
         <li>
-          <strong>Dispatch:</strong> A function that accepts actions to initiate
-          a possible state change
+          <strong>Dispatch:</strong> A function that accepts
+          actions to initiate a possible state change
         </li>
       </ul>
       <p>
-        In the component's UI callbacks, instead of calling the set state
-        functions, we'll dispatch actions instead. React will send that action
-        through the reducer and update the state.
+        In the component's UI callbacks, instead of calling
+        the set state functions, we'll dispatch actions
+        instead. React will send that action through the
+        reducer and update the state.
       </p>
       <VerticalSpacer />
       <p>
-        Here is the widget implemented with <Mono>useReducer</Mono>:
+        Here is the widget implemented with{' '}
+        <Mono>useReducer</Mono>:
       </p>
       <InlineEditorWidget />
     </>
