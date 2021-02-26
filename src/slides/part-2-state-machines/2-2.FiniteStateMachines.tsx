@@ -15,19 +15,21 @@ export function Slide_FiniteStateMachines() {
       </p>
       <ul>
         <li>
-          An abstract machine that can be in exactly one of a finite number of{' '}
-          <strong>states</strong> at any given time.
+          An abstract machine that can be in exactly one of
+          a finite number of <strong>states</strong> at any
+          given time.
         </li>
         <li>
-          The FSM <strong>transitions</strong> from one state to another in
-          response to some inputs (<strong>actions</strong>).
+          The FSM <strong>transitions</strong> from one
+          state to another in response to some inputs (
+          <strong>actions</strong>).
         </li>
       </ul>
       <VerticalSpacer />
       <h2>What does that mean for us?</h2>
       <p>
-        We can avoid those unexpected transitions by modeling our logic as a
-        state machine!
+        We can avoid those unexpected transitions by
+        modeling our logic as a state machine!
       </p>
     </>
   );

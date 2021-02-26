@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 import {
   Mono,
   VerticalSpacer,
-} from "../../talkUtils/FormatAndLayoutComponents";
-import { renderSlide } from "../../talkUtils/renderSlide";
+} from '../../talkUtils/FormatAndLayoutComponents';
+import { renderSlide } from '../../talkUtils/renderSlide';
 
 export function Slide_Part2Conclusion() {
   return (
@@ -48,33 +48,33 @@ export function Slide_Part2Conclusion() {
         <li>
           <a href="https://github.com/drbr/state-machine-talk">
             This presentation
-          </a>{" "}
+          </a>{' '}
           on GitHub
         </li>
         <li>
           <a href="https://kyleshevlin.com/how-to-use-usereducer-as-a-finite-state-machine">
             How to Use <Mono>useReducer</Mono> as a Finite
             State Machine
-          </a>{" "}
+          </a>{' '}
           (same technique as in this talk)
         </li>
         <li>
           <a href="https://www.youtube.com/watch?v=RqTxtOXcv8Y">
             Simplifying Complex UIs with Finite Automata &
             Statecharts
-          </a>{" "}
+          </a>{' '}
           (the talk I wish I gave)
         </li>
         <li>
           <a href="https://statecharts.github.io/what-is-a-state-machine.html">
             What is a state machine?
-          </a>{" "}
+          </a>{' '}
           on statecharts.io
         </li>
         <li>
           <a href="https://www.freecodecamp.org/news/state-machines-basics-of-computer-science-d42855debc66/">
             Understanding State Machines
-          </a>{" "}
+          </a>{' '}
           on FreeCodeCamp
         </li>
         <li>

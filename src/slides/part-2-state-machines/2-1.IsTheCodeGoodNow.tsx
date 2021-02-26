@@ -60,11 +60,14 @@ function inlineEditorReducer(
 
 const initialInlineEditorState: InlineEditorState = {
   savedValue: 'Edit me!',
-  editorValue: 'I get overwritten when edit mode starts so I can be anything',
+  editorValue:
+    'I get overwritten when edit mode starts so I can be anything',
   isEditing: false,
 };
 
-function InlineEditorWidget(props: { showDispatcherButtons: boolean }) {
+function InlineEditorWidget(props: {
+  showDispatcherButtons: boolean;
+}) {
   const [state, dispatch] = useReducer(
     inlineEditorReducer,
     initialInlineEditorState
@@ -85,7 +88,9 @@ function InlineEditorWidget(props: { showDispatcherButtons: boolean }) {
           />
         )}
       </form>
-      {props.showDispatcherButtons && <DispatcherButtons dispatch={dispatch} />}
+      {props.showDispatcherButtons && (
+        <DispatcherButtons dispatch={dispatch} />
+      )}
     </>
   );
 }
@@ -98,7 +103,11 @@ function InlineEditorReadonlyMode(props: {
     <>
       <span>{props.savedValue}</span>
       <div>
-        <button onClick={() => props.dispatch({ type: 'START_EDITING' })}>
+        <button
+          onClick={() =>
+            props.dispatch({ type: 'START_EDITING' })
+          }
+        >
           Edit
         </button>
       </div>
@@ -114,14 +123,17 @@ function InlineEditorEditMode(props: {
     <>
       <input
         value={props.editorValue}
-        onChange={(event) =>
-          props.dispatch({ type: 'EDIT_VALUE', value: event.target.value })
+        onChange={event =>
+          props.dispatch({
+            type: 'EDIT_VALUE',
+            value: event.target.value,
+          })
         }
       />
       <div>
         <button
           type="reset"
-          onClick={(event) => {
+          onClick={event => {
             event.preventDefault();
             props.dispatch({ type: 'CANCEL' });
           }}
@@ -130,7 +142,7 @@ function InlineEditorEditMode(props: {
         </button>
         <button
           type="submit"
-          onClick={(event) => {
+          onClick={event => {
             event.preventDefault();
             props.dispatch({ type: 'SAVE' });
           }}
@@ -142,12 +154,16 @@ function InlineEditorEditMode(props: {
   );
 }
 
-function DispatcherButtons(props: { dispatch: Dispatch<InlineEditorAction> }) {
+function DispatcherButtons(props: {
+  dispatch: Dispatch<InlineEditorAction>;
+}) {
   return (
     <>
       <button
         style={{ marginTop: 10, marginRight: 10 }}
-        onClick={() => props.dispatch({ type: 'START_EDITING' })}
+        onClick={() =>
+          props.dispatch({ type: 'START_EDITING' })
+        }
       >
         START_EDITING
       </button>
@@ -162,11 +178,16 @@ function DispatcherButtons(props: { dispatch: Dispatch<InlineEditorAction> }) {
 }
 
 export function Slide_IsTheCodeGoodNow() {
-  const [answerVisible, toggleAnswer] = useAnswerVisibility();
+  const [
+    answerVisible,
+    toggleAnswer,
+  ] = useAnswerVisibility();
   return (
     <>
       <h1>Is the code good now?</h1>
-      <InlineEditorWidget showDispatcherButtons={answerVisible} />
+      <InlineEditorWidget
+        showDispatcherButtons={answerVisible}
+      />
       <VerticalSpacer />
       <ToggleAnswerButton
         answerVisible={answerVisible}
@@ -176,8 +197,9 @@ export function Slide_IsTheCodeGoodNow() {
         <>
           <ul>
             <li>
-              What happens if we're currently editing the value and the{' '}
-              <Mono>START_EDITING</Mono> action gets dispatched again?
+              What happens if we're currently editing the
+              value and the <Mono>START_EDITING</Mono>{' '}
+              action gets dispatched again?
               {/*
             1. Start edit mode
             2. Type "I will never be overwritten!!"
@@ -185,8 +207,8 @@ export function Slide_IsTheCodeGoodNow() {
           */}
             </li>
             <li>
-              Or if we're in readonly mode and <Mono>SAVE</Mono> gets
-              dispatched?
+              Or if we're in readonly mode and{' '}
+              <Mono>SAVE</Mono> gets dispatched?
               {/*
             1. Start edit mode
             2. Type "What happens in edit mode stays in edit mode"
@@ -197,8 +219,9 @@ export function Slide_IsTheCodeGoodNow() {
           </ul>
           <VerticalSpacer />
           <p>
-            If the component receives certain actions at unexpected times, we
-            get unexpected behavior. How can we make this safer?
+            If the component receives certain actions at
+            unexpected times, we get unexpected behavior.
+            How can we make this safer?
           </p>
         </>
       )}

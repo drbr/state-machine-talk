@@ -1,26 +1,26 @@
-import { Dispatch, useReducer } from "react";
-import { assertUnreachableAndReturn } from "../../codeUtils/assertUnreachable";
-import { StateMachineObject } from "../../examples/UseStateMachineReducer";
-import { VerticalSpacer } from "../../talkUtils/FormatAndLayoutComponents";
-import { renderSlide } from "../../talkUtils/renderSlide";
+import { Dispatch, useReducer } from 'react';
+import { assertUnreachableAndReturn } from '../../codeUtils/assertUnreachable';
+import { StateMachineObject } from '../../examples/UseStateMachineReducer';
+import { VerticalSpacer } from '../../talkUtils/FormatAndLayoutComponents';
+import { renderSlide } from '../../talkUtils/renderSlide';
 
 type InlineEditorState =
   | {
-      name: "readonlyMode";
+      name: 'readonlyMode';
       savedValue: string;
     }
   | {
-      name: "editMode";
+      name: 'editMode';
       savedValue: string;
       editorValue: string;
     };
 
 type InlineEditorAction =
   | {
-      type: "START_EDITING" | "CANCEL" | "SAVE";
+      type: 'START_EDITING' | 'CANCEL' | 'SAVE';
     }
   | {
-      type: "EDIT_VALUE";
+      type: 'EDIT_VALUE';
       value: string;
     };
 
@@ -30,7 +30,7 @@ const inlineEditorStateMachine: StateMachineObject<
 > = {
   readonlyMode: {
     START_EDITING: (prev, action) => ({
-      name: "editMode",
+      name: 'editMode',
       savedValue: prev.savedValue,
       editorValue: prev.savedValue,
     }),
@@ -41,19 +41,19 @@ const inlineEditorStateMachine: StateMachineObject<
       editorValue: action.value,
     }),
     SAVE: (prev, action) => ({
-      name: "readonlyMode",
+      name: 'readonlyMode',
       savedValue: prev.editorValue,
     }),
     CANCEL: (prev, action) => ({
-      name: "readonlyMode",
+      name: 'readonlyMode',
       savedValue: prev.savedValue,
     }),
   },
 };
 
 const initialInlineEditorState: InlineEditorState = {
-  name: "readonlyMode",
-  savedValue: "Edit me!",
+  name: 'readonlyMode',
+  savedValue: 'Edit me!',
 };
 
 /**
@@ -86,12 +86,12 @@ function InlineEditorWidget() {
   return (
     <>
       <form className="inline-editor-box">
-        {state.name === "editMode" ? (
+        {state.name === 'editMode' ? (
           <InlineEditorEditMode
             editorValue={state.editorValue}
             dispatch={dispatch}
           />
-        ) : state.name === "readonlyMode" ? (
+        ) : state.name === 'readonlyMode' ? (
           <InlineEditorReadonlyMode
             savedValue={state.savedValue}
             dispatch={dispatch}
@@ -115,7 +115,7 @@ function InlineEditorReadonlyMode(props: {
       <div>
         <button
           onClick={() =>
-            props.dispatch({ type: "START_EDITING" })
+            props.dispatch({ type: 'START_EDITING' })
           }
         >
           Edit
@@ -133,9 +133,9 @@ function InlineEditorEditMode(props: {
     <>
       <input
         value={props.editorValue}
-        onChange={(event) =>
+        onChange={event =>
           props.dispatch({
-            type: "EDIT_VALUE",
+            type: 'EDIT_VALUE',
             value: event.target.value,
           })
         }
@@ -143,18 +143,18 @@ function InlineEditorEditMode(props: {
       <div>
         <button
           type="reset"
-          onClick={(event) => {
+          onClick={event => {
             event.preventDefault();
-            props.dispatch({ type: "CANCEL" });
+            props.dispatch({ type: 'CANCEL' });
           }}
         >
           Cancel
         </button>
         <button
           type="submit"
-          onClick={(event) => {
+          onClick={event => {
             event.preventDefault();
-            props.dispatch({ type: "SAVE" });
+            props.dispatch({ type: 'SAVE' });
           }}
         >
           Save
@@ -187,14 +187,14 @@ function DispatcherButtons(props: {
       <button
         style={{ marginTop: 10, marginRight: 10 }}
         onClick={() =>
-          props.dispatch({ type: "START_EDITING" })
+          props.dispatch({ type: 'START_EDITING' })
         }
       >
         START_EDITING
       </button>
       <button
         style={{ marginTop: 10, marginRight: 10 }}
-        onClick={() => props.dispatch({ type: "SAVE" })}
+        onClick={() => props.dispatch({ type: 'SAVE' })}
       >
         SAVE
       </button>

@@ -29,8 +29,8 @@ function inlineEditorStateMachine_NestedSwitch(
   // Now, there are two levels of switch statement:
   // - Outer switch for the state
   // - Inner switch for the action. Note that we no longer
-  //   need to respond to every action in each state, so
-  //   the default case is reachable.
+  //   need to respond to every action in each state, so the
+  //   default case is reachable.
   switch (prevState.name) {
     case 'readonlyMode':
       switch (action.type) {
@@ -70,9 +70,10 @@ function inlineEditorStateMachine_NestedSwitch(
 }
 
 /**
- * Type definition for a state machine, which enforces that the keys
- * match the state names and actions. All states must be present, but
- * a state need not respond to all actions.
+ * Type definition for a state machine, which enforces that
+ * the keys match the state names and actions. All states
+ * must be present, but a state need not respond to all
+ * actions.
  */
 type StateMachineObject<
   S extends { name: string },
@@ -119,8 +120,8 @@ export function Slide_StateMachineAsReducer() {
     <>
       <h1>State Machine as Reducer</h1>
       <p>
-        With an extra set of guards, the reducer formula can also model a state
-        machine.
+        With an extra set of guards, the reducer formula can
+        also model a state machine.
       </p>
       <p>Two common patterns:</p>
       <ul>
@@ -132,9 +133,13 @@ export function Slide_StateMachineAsReducer() {
         <li>Lookup table / Object</li>
         <ul>
           <li>More compact, arguably more readable</li>
-          <li>Machine definition is data instead of a function</li>
+          <li>
+            Machine definition is data instead of a function
+          </li>
           <li>Easier to run analysis/visulization tools</li>
-          <li>Needs an extra function to look up the value</li>
+          <li>
+            Needs an extra function to look up the value
+          </li>
         </ul>
       </ul>
     </>
