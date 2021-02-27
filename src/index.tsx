@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { InlineEditorClassComponent } from './examples/ClassComponentExample';
 import './index.css';
 import { Slide_Introduction } from './slides/Introduction';
 import { Slide_InlineEditorComponent } from './slides/part-1-reducers/1-1.InlineEditorComponent';
@@ -30,10 +29,6 @@ export interface SlidePlugin extends BasePlugin {
 
 /* eslint-disable react/jsx-pascal-case */
 export const SlidePluginManager = new PluginManager<SlidePlugin>(
-  {
-    name: 'Class component example',
-    element: <InlineEditorClassComponent />,
-  },
   {
     name: 'Introduction',
     element: <Slide_Introduction />,
