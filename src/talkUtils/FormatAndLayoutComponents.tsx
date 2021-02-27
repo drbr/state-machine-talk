@@ -4,14 +4,14 @@ import { ReactNode } from 'react';
  * Inline monospace text.
  */
 export function Mono(props: { children: string }) {
-  return <span className="monospaced">{props.children}</span>;
+  return <code>{props.children}</code>;
 }
 
 export function MonoBlock(props: { children: ReactNode }) {
   return (
-    <div className="monospaced mono-block">
-      <pre>{props.children}</pre>
-    </div>
+    <pre className="mono-block">
+      <code>{props.children}</code>
+    </pre>
   );
 }
 
@@ -19,7 +19,9 @@ export function MonoBlock(props: { children: ReactNode }) {
  * Strikethrough text.
  */
 export function Strike(props: { children: ReactNode }) {
-  return <span className="strikethrough">{props.children}</span>;
+  return (
+    <span className="strikethrough">{props.children}</span>
+  );
 }
 
 export function VerticalSpacer() {
@@ -27,7 +29,11 @@ export function VerticalSpacer() {
 }
 
 export function Centered(props: { children: ReactNode }) {
-  return <div style={{ textAlign: 'center' }}>{props.children}</div>;
+  return (
+    <div style={{ textAlign: 'center' }}>
+      {props.children}
+    </div>
+  );
 }
 
 /**
@@ -37,9 +43,13 @@ export function Centered(props: { children: ReactNode }) {
  */
 export const EmojiListItem = {
   Owl: (props: { children: ReactNode }) => (
-    <li className="emoji-list-item-owl">{props.children}</li>
+    <li className="emoji-list-item-owl">
+      {props.children}
+    </li>
   ),
   Person: (props: { children: ReactNode }) => (
-    <li className="emoji-list-item-person">{props.children}</li>
+    <li className="emoji-list-item-person">
+      {props.children}
+    </li>
   ),
 };

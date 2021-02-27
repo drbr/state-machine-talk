@@ -23,19 +23,18 @@
   margin-top: 40px;
 }
 
-.monospaced {
+code {
   font-family: monospace;
-  background-color: rgba(27, 31, 35, 0.1);
+  background-color: rgb(232, 233, 233);
 }
-a .monospaced {
+a code {
   background-color: initial;
 }
 
 .mono-block {
-  padding: 8px;
-}
-.mono-block pre {
   margin: 0;
+  padding: 8px;
+  background-color: rgb(232, 233, 233);
 }
 
 .strikethrough {
