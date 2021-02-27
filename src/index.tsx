@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { InlineEditorClassComponent } from './examples/ClassComponentExample';
 import './index.css';
 import { Slide_Introduction } from './slides/Introduction';
 import { Slide_InlineEditorComponent } from './slides/part-1-reducers/1-1.InlineEditorComponent';
@@ -16,7 +17,10 @@ import { Slide_DefineTheStatesInCode } from './slides/part-2-state-machines/2-4.
 import { Slide_StateMachineAsReducer } from './slides/part-2-state-machines/2-5.StateMachineAsReducer';
 import { Slide_UseStateMachine } from './slides/part-2-state-machines/2-6.UseStateMachine';
 import { Slide_Part2Conclusion } from './slides/part-2-state-machines/2-7.Part2Conclusion';
-import { BasePlugin, PluginManager } from './talkUtils/PluginManager';
+import {
+  BasePlugin,
+  PluginManager,
+} from './talkUtils/PluginManager';
 import { PluginSelectorDropdown } from './talkUtils/PluginSelectorDropdown';
 import { renderSlide } from './talkUtils/renderSlide';
 
@@ -26,6 +30,10 @@ export interface SlidePlugin extends BasePlugin {
 
 /* eslint-disable react/jsx-pascal-case */
 export const SlidePluginManager = new PluginManager<SlidePlugin>(
+  {
+    name: 'Class component example',
+    element: <InlineEditorClassComponent />,
+  },
   {
     name: 'Introduction',
     element: <Slide_Introduction />,
@@ -116,7 +124,9 @@ export function SlideSelector() {
         selectedPlugin={slide}
         onChange={setSlide}
       />
-      <div className="module-container">{slide.element}</div>
+      <div className="module-container">
+        {slide.element}
+      </div>
     </>
   );
 }

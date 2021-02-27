@@ -1,4 +1,4 @@
-import React, { Dispatch } from 'react';
+import React from 'react';
 import { assertUnreachable } from '../codeUtils/assertUnreachable';
 import { renderSlide } from '../talkUtils/renderSlide';
 
@@ -67,7 +67,7 @@ const initialInlineEditorState: InlineEditorState = {
  * machine as shown in part 2, we could easily change the
  * dispatch function to do that.
  */
-export class InlineEditorWidget extends React.Component<
+export class InlineEditorClassComponent extends React.Component<
   unknown,
   InlineEditorState
 > {
@@ -97,7 +97,7 @@ export class InlineEditorWidget extends React.Component<
     );
   }
 
-  private renderReadonlyMode() {
+  private renderEditMode() {
     return (
       <>
         <input
@@ -133,7 +133,7 @@ export class InlineEditorWidget extends React.Component<
     );
   }
 
-  private renderEditMode() {
+  private renderReadonlyMode() {
     return (
       <>
         <span>{this.state.savedValue}</span>
@@ -151,4 +151,4 @@ export class InlineEditorWidget extends React.Component<
   }
 }
 
-renderSlide(InlineEditorWidget);
+renderSlide(InlineEditorClassComponent);
