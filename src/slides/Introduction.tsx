@@ -13,7 +13,10 @@ export function Slide_Introduction() {
         <h1>Reducers and State Machines in Local UI</h1>
         <h2>Andrew Brandon</h2>
         <VerticalSpacer />
-        <p>Patterns to build and organize logic for stateful components</p>
+        <p>
+          Patterns to build and organize logic for stateful
+          components
+        </p>
       </Centered>
       <VerticalSpacer />
       <p>Today's talk is in two parts:</p>
@@ -23,12 +26,13 @@ export function Slide_Introduction() {
       </ol>
       <VerticalSpacer />
       <p>
-        Yes, the slides have a lot of words. This is an a11y feature. Watch or
-        listen; your choice!
+        Yes, the slides have a lot of words. This is an a11y
+        feature. Watch or listen; your choice!
       </p>
       <p>
-        <em>If viewing on CodeSandbox:</em> Select "Current Module View" (in the
-        toolbar above the web view), then open each slide individually from the{' '}
+        <em>If viewing on CodeSandbox:</em> Select "Current
+        Module View" (in the toolbar above the web view),
+        then open each slide individually from the{' '}
         <Mono>slides</Mono> folder.
       </p>
     </>
