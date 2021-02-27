@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer } from 'react';
 
 /**
  * Type definition for a state machine, which enforces that the keys
@@ -9,8 +9,8 @@ export type StateMachineObject<
   S extends { name: string },
   A extends { type: string }
 > = {
-  [StateName in S["name"]]: {
-    [ActionType in A["type"]]?: (
+  [StateName in S['name']]: {
+    [ActionType in A['type']]?: (
       prevState: { name: StateName } & S,
       action: { type: ActionType } & A
     ) => S;
