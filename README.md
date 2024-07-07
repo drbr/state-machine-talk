@@ -4,9 +4,10 @@ This repo contains the slides and code examples for a talk I gave in February 20
 
 ## Codesandbox
 
-The presentation is designed to be viewed in [codesandbox.io](https://codesandbox.io). In "Current Module View" (enabled by default in the link below), click on each slide in the `slides` directory to view it:
+The presentation is designed to be viewed in [codesandbox.io](https://codesandbox.io).
 
-https://codesandbox.io/s/github/drbr/state-machine-talk?moduleview=1&file=/src/slides/Introduction.tsx
+- If you're logged in to code sandbox, use [this link](https://codesandbox.io/s/github/drbr/state-machine-talk?moduleview=1&file=/src/slides/Introduction.tsx) to view the talk in "Current Module View" (enabled by default in the link below). Click on each slide in the `slides` directory to view it, and the rendered output will stay in sync with that file.
+- If you're not logged in, use [this link](https://codesandbox.io/p/sandbox/github/drbr/state-machine-talk/tree/main/?file=%2Fsrc%2Findex.tsx) to view the talk and switch slides via the menu at the top. But you'll have to separately manually navigate to each file on the left to see its source.
 
 ## Create React App
 
