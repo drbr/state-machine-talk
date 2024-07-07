@@ -3,7 +3,7 @@
 This repo contains the slides and code examples for a talk I gave in February 2021. At my then-workplace (where dozens of teams across different orgs worked on React code), I noticed that although developers were familiar with using Redux reducers to manage app-wide state, they were using more haphazard patterns to manage the state of local UI components (forms, dialog boxes, buttons, etc.). This talk aims to demonstrate that reducers and state machines are useful at any level of the component hierarchy to manage state and decouple state-transition code from display code.
 
 The main artifact from the talk is the [`useStateMachineReducer`](https://github.com/drbr/state-machine-talk/blob/main/src/examples/UseStateMachineReducer.tsx) hook,
-which I encouraged my peers to copy-paste into their own projects.
+which I encouraged my peers to copy-paste into their own projects. I've put this pattern to use in several projects, including my implementation of [Mastermind](https://github.com/drbr/master-mind).
 
 ## Codesandbox
 
